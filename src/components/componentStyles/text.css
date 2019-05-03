@@ -4,3 +4,9 @@
     text-overflow: ellipsis; 
     width: 150px; 
 }
+
+.myFont {
+    font-family: 'PT Sans', sans-serif;
+    color: white;
+}
+

@@ -1,23 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchMovies } from '../actions';
+import { searchMovies, signIn } from '../actions';
 
 import './componentStyles/text.css';
 
 class App extends React.Component {
 	componentDidMount() {
 		this.props.searchMovies('war');
+		this.props.signIn();
 	}
 
 	renderMovieList = () => {
 		return this.props.movies.map((movie) => {
 			return (
-				<div style={{ margin: '20px 0' }} className="content">
-					<div key={movie.id}>
+				<div key={movie.id} style={{ margin: '20px 0' }} className="content">
+					<div>
 						<h4 className="header crop">{movie.title}</h4>
 						<img
-							style={{ maxWidth: 150, height: 240, borderRadius: 5, boxShadow: '4px 4px 4px rgb(13, 30, 51)' }}
-							alt={`${movie.title} picture`}
+							style={{
+								maxWidth: 150,
+								height: 240,
+								borderRadius: 5,
+								boxShadow: '4px 4px 4px rgb(13, 30, 51)'
+							}}
+							alt={`${movie.title} pic`}
 							src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 						/>
 					</div>
@@ -30,7 +36,7 @@ class App extends React.Component {
 		return (
 			<div>
 				<div className="ui container">
-					<div style={{ marginTop: 40}} className="ui centered grid">
+					<div style={{ marginTop: 90 }} className="ui centered grid">
 						{this.renderMovieList()}
 					</div>
 				</div>
@@ -43,4 +49,4 @@ const mapStateToProps = (state) => {
 	return { movies: state.moviesReducer };
 };
 
-export default connect(mapStateToProps, { searchMovies })(App);
+export default connect(mapStateToProps, { searchMovies, signIn })(App);
