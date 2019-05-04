@@ -30,7 +30,7 @@ class Header extends React.Component {
 				<div className="ui item">
 					<a
 						href={`https://www.themoviedb.org/authenticate/${this.props.isSignedIn
-							.request_token}?redirect_to=http://localhost:3000/`}
+							.request_token}?redirect_to=https://aric-hylton-moviely.herokuapp.com/`}
 					>
 						<button className="ui button blue">Sign In with MovieDB</button>
 					</a>
