@@ -1,7 +1,7 @@
 export default (store=[], action) => {
     switch (action.type) {
         case 'SEARCH_MOVIES':
-            return [...store, ...action.payload];
+            return [...action.payload];
         default:
             return store;
     }

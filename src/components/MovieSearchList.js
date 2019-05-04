@@ -5,10 +5,6 @@ import { searchMovies, signIn } from '../actions';
 import './componentStyles/text.css';
 
 class App extends React.Component {
-	componentDidMount() {
-		this.props.searchMovies('war');
-		this.props.signIn();
-	}
 
 	renderMovieList = () => {
 		return this.props.movies.map((movie) => {
@@ -32,7 +28,19 @@ class App extends React.Component {
 		});
 	};
 
-	render() {
+	render() {			
+		if (this.props.loading) {
+			return (
+				<div>
+					<div>
+						<div className="ui active dimmer">
+							<div className="ui big text loader">Searching...</div>
+						</div>
+					</div>
+				</div>
+			);
+		}
+
 		return (
 			<div>
 				<div className="ui container">
@@ -46,7 +54,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	return { movies: state.moviesReducer };
+	return { movies: state.moviesReducer, loading: state.loading };
 };
 
 export default connect(mapStateToProps, { searchMovies, signIn })(App);
