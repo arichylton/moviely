@@ -12,7 +12,7 @@
 }
 
 h2 {
-    margin-bottom: 50px;
+    margin-bottom: 45px;
 }
 
 h2:after {
@@ -21,6 +21,6 @@ h2:after {
     height: 2px;
     background-color: rgb(200, 50, 102);
     content: "";
-    margin: 30px auto;   
+    margin: 25px auto;   
 }
 

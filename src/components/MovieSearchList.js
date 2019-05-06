@@ -5,9 +5,6 @@ import { searchMovies } from '../actions';
 import './componentStyles/text.css';
 
 class App extends React.Component {
-	componentDidMount() {
-		this.props.searchMovies('space');
-	}
 
 	renderMovieList = () => {
 		if (this.props.guestSignInData.success) {
@@ -62,6 +59,18 @@ class App extends React.Component {
 		}
 	};
 
+	searchResultsRender = () => {
+		if (!this.props.searchTerm) {
+			return (
+				<h2 style={{ textAlign: 'center', wordSpacing: '1px' }}>Search for cool movies</h2>				
+			)
+		} else {
+			return (
+				<h2 style={{ textAlign: 'center', wordSpacing: '1px' }}>Search Results for <span style={{color: 'rgb(200, 50, 102)'}}>{this.props.searchTerm.charAt(0).toUpperCase() + this.props.searchTerm.slice(1)}</span></h2>
+			)
+		}
+	}
+
 	render() {
 		if (this.props.loading) {
 			return (
@@ -79,7 +88,7 @@ class App extends React.Component {
 			<div>
 				<div className="ui container">
 					<div style={{ marginTop: 140 }}>
-						<h2 style={{ textAlign: 'center' }}>Search Results for {this.props.searchTerm}</h2>
+						{this.searchResultsRender()}
 						<div className="ui centered grid">{this.renderMovieList()}</div>
 					</div>
 				</div>

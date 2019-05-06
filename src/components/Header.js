@@ -67,12 +67,12 @@ class Header extends React.Component {
 				className="ui fixed menu"
 			>
 				<div style={{ display: 'flex', width: '100%', margin: '0 4%' }}>
-					<div style={{ display: 'flex' }}>
-						<a style={{ color: 'white' }} className="active item" href="#">
+					<div style={{ display: 'flex', flex: '0 1 auto' }}>
+						<Link to="/" style={{ color: 'white' }} className="item">
 							<h1>
 								<i className="ui movie icon" /> Moviely
 							</h1>
-						</a>
+						</Link>
 						<a style={{ color: 'white' }} className="item" href="#">
 							Messages
 						</a>
@@ -82,11 +82,11 @@ class Header extends React.Component {
 						<div className="item" />
 					</div>
 
-					<div style={{ flex: 'auto' }}>
+					<div style={{ flex: '1 0 auto' }}>
 						<SearchBar />
 					</div>
 
-					<div className="right menu">
+					<div className="right menu" style={{flex: '1 0 auto', maxWidth: 400}}>
 						<div className="item" />
 						{this.renderButtons()}
 					</div>
