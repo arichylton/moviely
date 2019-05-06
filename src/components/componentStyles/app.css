@@ -1,4 +1,11 @@
 body {
-    background-color: rgb(17, 38, 66);
+    min-height: 100vh;
+	height: 100%;
+	width: 100%;
+    background-image: linear-gradient(rgba(13, 30, 51, 0.966), rgba(13, 30, 51, 0.966)), url(../../pics/background-1.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+
     color: white
 }

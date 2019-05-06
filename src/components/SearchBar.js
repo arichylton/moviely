@@ -1,13 +1,13 @@
 import React from 'react';
 import { searchMovies, loading } from '../actions';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 class SearchBar extends React.Component {
 	state = { term: '' };
 
 	onFormSubmit = (event) => {
 		event.preventDefault();
-
 		this.props.loading(true);
 		this.props.searchMovies(this.state.term);
 	};
@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
 		return (
 			<form
 				className="ui form inverted item"
-				style={{ flex: '1', maxWidth: '800px' }}
+				style={{ maxWidth: '800px', margin: 'auto' }}
 				onSubmit={this.onFormSubmit}
 			>
 				<input

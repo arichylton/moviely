@@ -1,42 +1,21 @@
 import React from 'react';
 import './componentStyles/text.css';
 import { connect } from 'react-redux';
-import { signIn, signOut } from '../actions';
+import { requestAuthToken, signOut, guestSignIn } from '../actions';
+import { link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
 class Header extends React.Component {
 	onSignInClick = () => {
-		if (!window.location.href.includes(`true`)) {
-			this.props.signIn();
+		if (!window.location.href.includes(`true`) && !this.props.guestSignInData.success) {
+			this.props.requestAuthToken();
 		} else {
 			this.props.signOut();
 		}
 	};
 
-	renderButton = () => {
-		
-
-		if (!this.props.isSignedIn.success && !window.location.href.includes(`true`)) {
-			return (
-				<a style={{ color: 'white' }} className="ui item">
-					<button onClick={this.onSignInClick} className="ui button primary">
-						{' '}
-						Get Auth Token
-					</button>
-				</a>
-			);
-		} else if (this.props.isSignedIn.success) {
-			return (
-				<div className="ui item">
-					<a
-						href={`https://www.themoviedb.org/authenticate/${this.props.isSignedIn
-							.request_token}?redirect_to=https://aric-hylton-moviely.herokuapp.com/`}
-					>
-						<button className="ui button blue">Sign In with MovieDB</button>
-					</a>
-				</div>
-			);
-		} else {
+	renderButtons = () => {
+		if (window.location.href.includes(`true`) || this.props.guestSignInData.success) {
 			return (
 				<div className="ui item">
 					<a href="/">
@@ -46,13 +25,40 @@ class Header extends React.Component {
 					</a>
 				</div>
 			);
+		} else if (!this.props.isSignedIn.success) {
+			return (
+				<div style={{display: 'flex'}}>
+					<a style={{ color: 'white' }} className="ui item">
+						<button onClick={this.onSignInClick} className="ui button primary">
+							{' '}
+							Get Auth Token
+						</button>
+					</a>
+					<a className="ui item">
+						<button className="ui button grey" onClick={() => this.props.guestSignIn()}>
+							Sign in as Guest
+						</button>
+					</a>
+				</div>
+			);
+		} else if (this.props.isSignedIn.success) {
+			return (
+				<div className="ui item">
+					<a
+						href={`https://www.themoviedb.org/authenticate/${this.props.isSignedIn
+							.request_token}?redirect_to=http://localhost:3000/`}
+					>
+						<button className="ui button blue">Sign In with MovieDB</button>
+					</a>
+				</div>
+			);
 		}
 	};
 
 	render() {
 		return (
 			<div
-				style={{					
+				style={{
 					display: 'flex',
 					padding: '5px 0',
 					backgroundColor: 'rgb(17, 38, 66)',
@@ -60,9 +66,9 @@ class Header extends React.Component {
 				}}
 				className="ui fixed menu"
 			>
-				<div className="ui container">
+				<div style={{display: 'flex', width: '100%', margin: '0 2%'}} className="">
 					<a style={{ color: 'white' }} className="active item" href="#">
-						Home
+						<h2>Moviely</h2>
 					</a>
 					<a style={{ color: 'white' }} className="item" href="#">
 						Messages
@@ -70,13 +76,13 @@ class Header extends React.Component {
 					<a style={{ color: 'white' }} className="item" href="#">
 						Friends
 					</a>
-					<SearchBar />
+					<div style={{flex: '1'}}>
+						<SearchBar />
+					</div>
+					
 					<div className="right menu">
 						<div className="item" />
-						{this.renderButton()}
-						<a className="ui item">
-							<button className="ui button">Sign in as Guest</button>
-						</a>
+						{this.renderButtons()}
 					</div>
 				</div>
 			</div>
@@ -85,7 +91,7 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	return { isSignedIn: state.isSignedIn };
+	return { isSignedIn: state.isSignedIn, guestSignInData: state.guestSignInData };
 };
 
-export default connect(mapStateToProps, { signIn, signOut })(Header);
+export default connect(mapStateToProps, { requestAuthToken, signOut, guestSignIn })(Header);
