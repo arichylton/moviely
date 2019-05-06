@@ -14,28 +14,45 @@ class Header extends React.Component {
 		}
 	};
 
+	renderProfileButton = () => {
+		if (window.location.href.includes('true')) {
+			return (
+				<Link to="/profile" className="ui item">
+					<button className="ui button primary">Profile</button>
+				</Link>
+			);
+		} else {
+			return (
+				<Link to="/profile/guest" className="ui item">
+					<button className="ui button">Guest Profile</button>
+				</Link>
+			);
+		}
+	};
+
 	renderButtons = () => {
 		if (window.location.href.includes(`true`) || this.props.guestSignInData.success) {
 			return (
-				<div className="ui item">
-					<a href="/">
-						<button className="ui button negative" onClick={this.onSignInClick}>
+				<div style={{ display: 'flex' }}>
+					{this.renderProfileButton()}
+					<Link to="/" className="ui item">
+						<button className="ui red inverted button" onClick={this.props.signOut}>
 							Sign Out
 						</button>
-					</a>
+					</Link>
 				</div>
 			);
 		} else if (!this.props.isSignedIn.success) {
 			return (
 				<div style={{ display: 'flex' }}>
 					<a style={{ color: 'white' }} className="ui item">
-						<button onClick={this.onSignInClick} className="ui button primary">
+						<button onClick={this.onSignInClick} className="ui button inverted primary">
 							{' '}
 							Get Auth Token
 						</button>
 					</a>
 					<a className="ui item">
-						<button className="ui button grey" onClick={() => this.props.guestSignIn()}>
+						<button className="ui button inverted grey" onClick={() => this.props.guestSignIn()}>
 							Sign in as Guest
 						</button>
 					</a>
@@ -86,7 +103,7 @@ class Header extends React.Component {
 						<SearchBar />
 					</div>
 
-					<div className="right menu" style={{flex: '1 0 auto', maxWidth: 400}}>
+					<div className="right menu" style={{ flex: '1 0 auto', maxWidth: 400 }}>
 						<div className="item" />
 						{this.renderButtons()}
 					</div>

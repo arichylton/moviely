@@ -1,11 +1,11 @@
 body {
-    min-height: 100vh;
+	min-height: 100vh;
 	height: 100%;
 	width: 100%;
-    background-image: linear-gradient(rgba(13, 30, 51, 0.966), rgba(13, 30, 51, 0.966)), url(../../pics/background-1.jpg);
+    background-image: linear-gradient(to bottom right, rgba(13, 30, 51, 0.966), rgba(13, 14, 51, 0.966)), url(../../pics/background-1.jpg);
 	background-size: cover;
 	background-position: center;
-	background-attachment: fixed;
+    background-attachment: fixed;
 
     color: white
 }
