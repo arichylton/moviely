@@ -33,6 +33,13 @@ export const searchMovies = (input) => async (dispatch) => {
 	dispatch({ type: 'SEARCH_MOVIES', payload: response.data.results });
 };
 
+export const route = (data) => {
+	return {
+		type: 'ROUTE',
+		payload: data
+	}
+}
+
 export const searchTerm = (input) => {
 	return {
 		type: 'SEARCH_TERM',

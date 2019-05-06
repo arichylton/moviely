@@ -5,7 +5,16 @@ import '../componentStyles/text.css';
 import '../componentStyles/profile.css';
 
 class SignIn extends React.Component {
-	renderGuestProfile() {
+	renderProfile() {
+		if (!this.props.windowRoute.includes(`true`)) {
+			return (
+				<div>
+					<h2 style={{ textAlign: 'center', wordSpacing: '1px' }} className="ui item">
+						Please Sign In Through <span style={{ color: 'rgb(200, 50, 102)' }}>'Get Auth Token</span>
+					</h2>
+				</div>
+			);
+		} else {
 			return (
 				<div className="header-center" style={{ marginTop: 80, marginLeft: '20%' }}>
 					<div>
@@ -45,9 +54,15 @@ class SignIn extends React.Component {
 					</div>
 				</div>
 			);
+		}
 	}
 
 	renderLeftRail = () => {
+		if (!this.props.windowRoute.includes(`true`)) {
+			return (
+				null
+			);
+		} else {
 			return (
 				<div>
 					<div className="rail">
@@ -81,16 +96,21 @@ class SignIn extends React.Component {
 					</div>
 				</div>
 			);
+		}
 	};
 
 	renderTitle = () => {
+		if (!this.props.windowRoute.includes(`true`)) {
+			return (
+				null
+			);
+		} else {
 			return (
 				<div style={{ paddingTop: 140, marginLeft: '20%' }}>
-					<h3>
-						User Profile
-					</h3>
+					<h3>User Profile</h3>
 				</div>
 			);
+		}
 	};
 
 	render() {
@@ -98,14 +118,14 @@ class SignIn extends React.Component {
 			<div className="profile-background " style={{ height: '100%' }}>
 				{this.renderLeftRail()}
 				{this.renderTitle()}
-				<div>{this.renderGuestProfile()}</div>
+				<div>{this.renderProfile()}</div>
 			</div>
 		);
 	}
 }
 
 const mapStateToProps = (state) => {
-	return { guestSignInData: state.guestSignInData };
+	return { guestSignInData: state.guestSignInData, windowRoute: state.windowRoute };
 };
 
 export default connect(mapStateToProps)(SignIn);

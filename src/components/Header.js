@@ -1,7 +1,7 @@
 import React from 'react';
 import './componentStyles/text.css';
 import { connect } from 'react-redux';
-import { requestAuthToken, signOut, guestSignIn } from '../actions';
+import { requestAuthToken, signOut, guestSignIn, route } from '../actions';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
@@ -18,7 +18,7 @@ class Header extends React.Component {
 		if (window.location.href.includes('true')) {
 			return (
 				<Link to="/profile" className="ui item">
-					<button className="ui button primary">Profile</button>
+					<button onClick={() => this.props.route(window.location.href)} className="ui button primary">Profile</button>
 				</Link>
 			);
 		} else {
@@ -114,7 +114,10 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	return { isSignedIn: state.isSignedIn, guestSignInData: state.guestSignInData };
+	return {
+		isSignedIn: state.isSignedIn,
+		guestSignInData: state.guestSignInData,		
+	};
 };
 
-export default connect(mapStateToProps, { requestAuthToken, signOut, guestSignIn })(Header);
+export default connect(mapStateToProps, { requestAuthToken, signOut, guestSignIn, route })(Header);
