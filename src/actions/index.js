@@ -28,9 +28,17 @@ export const searchMovies = (input) => async (dispatch) => {
 	);
 
 	dispatch(loading(false));
+	dispatch(searchTerm(input));
 
 	dispatch({ type: 'SEARCH_MOVIES', payload: response.data.results });
 };
+
+export const searchTerm = (input) => {
+	return {
+		type: 'SEARCH_TERM',
+		payload: input
+	}
+}
 
 export const loading = (boolean) => {
 	return {

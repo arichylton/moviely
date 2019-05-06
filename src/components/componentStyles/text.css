@@ -11,3 +11,16 @@
     color: white;
 }
 
+h2 {
+    margin-bottom: 50px;
+}
+
+h2:after {
+    width: 125px;
+    display: block;
+    height: 2px;
+    background-color: rgb(200, 50, 102);
+    content: "";
+    margin: 30px auto;   
+}
+

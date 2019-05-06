@@ -1,7 +1,6 @@
 import React from 'react';
-import { searchMovies, loading } from '../actions';
+import { searchMovies, loading, searchTerm } from '../actions';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 class SearchBar extends React.Component {
 	state = { term: '' };
@@ -16,7 +15,7 @@ class SearchBar extends React.Component {
 		return (
 			<form
 				className="ui form inverted item"
-				style={{ maxWidth: '800px', margin: 'auto' }}
+				style={{ margin: 'auto', maxWidth: '900px' }}
 				onSubmit={this.onFormSubmit}
 			>
 				<input
@@ -31,4 +30,4 @@ class SearchBar extends React.Component {
 	}
 }
 
-export default connect(null, { searchMovies, loading })(SearchBar);
+export default connect(null, { searchMovies, loading, searchTerm })(SearchBar);

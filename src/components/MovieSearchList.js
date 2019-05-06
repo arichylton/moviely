@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { searchMovies } from '../actions';
 
 import './componentStyles/text.css';
-import { voidTypeAnnotation } from '@babel/types';
 
 class App extends React.Component {
 	componentDidMount() {
@@ -16,7 +15,7 @@ class App extends React.Component {
 				return (
 					<div key={movie.id} style={{ margin: '40px 20px' }} className="content">
 						<div>
-							<h4 className="header crop">{movie.title}</h4>							
+							<h4 className="header crop">{movie.title}</h4>
 							<img
 								style={{
 									maxWidth: 200,
@@ -36,10 +35,15 @@ class App extends React.Component {
 		} else {
 			return this.props.movies.map((movie) => {
 				return (
-					<div key={movie.id} style={{ margin: '35px 25px' }} className="content">
+					<div key={movie.id} style={{ margin: '30px 20px' }} className="content">
 						<div>
-							<h4 style={{margin: '9px auto'}} className="crop">{movie.title}</h4>
-							<h5 style={{margin: '5px auto 15px auto', color: 'rgb(200, 50, 102)'}} className="crop"><i style={{marginRight: 4}} className="ui star icon" />{`${movie.vote_average}`}</h5>
+							<h4 style={{ margin: '9px auto' }} className="crop">
+								{movie.title}
+							</h4>
+							<h5 style={{ margin: '5px auto 15px auto', color: 'rgb(200, 50, 102)' }} className="crop">
+								<i style={{ marginRight: 4 }} className="ui star icon" />
+								{`${movie.vote_average}`}
+							</h5>
 							<img
 								style={{
 									maxWidth: 200,
@@ -56,11 +60,9 @@ class App extends React.Component {
 				);
 			});
 		}
-
-		
 	};
 
-	render() {			
+	render() {
 		if (this.props.loading) {
 			return (
 				<div>
@@ -76,8 +78,9 @@ class App extends React.Component {
 		return (
 			<div>
 				<div className="ui container">
-					<div style={{ marginTop: 90 }} className="ui centered grid">
-						{this.renderMovieList()}
+					<div style={{ marginTop: 140 }}>
+						<h2 style={{ textAlign: 'center' }}>Search Results for {this.props.searchTerm}</h2>
+						<div className="ui centered grid">{this.renderMovieList()}</div>
 					</div>
 				</div>
 			</div>
@@ -86,7 +89,12 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	return { movies: state.moviesReducer, loading: state.loading, guestSignInData: state.guestSignInData };
+	return {
+		movies: state.moviesReducer,
+		loading: state.loading,
+		guestSignInData: state.guestSignInData,
+		searchTerm: state.searchTerm
+	};
 };
 
 export default connect(mapStateToProps, { searchMovies })(App);

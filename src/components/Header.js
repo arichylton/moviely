@@ -2,7 +2,7 @@ import React from 'react';
 import './componentStyles/text.css';
 import { connect } from 'react-redux';
 import { requestAuthToken, signOut, guestSignIn } from '../actions';
-import { link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
 class Header extends React.Component {
@@ -27,7 +27,7 @@ class Header extends React.Component {
 			);
 		} else if (!this.props.isSignedIn.success) {
 			return (
-				<div style={{display: 'flex'}}>
+				<div style={{ display: 'flex' }}>
 					<a style={{ color: 'white' }} className="ui item">
 						<button onClick={this.onSignInClick} className="ui button primary">
 							{' '}
@@ -66,20 +66,26 @@ class Header extends React.Component {
 				}}
 				className="ui fixed menu"
 			>
-				<div style={{display: 'flex', width: '100%', margin: '0 2%'}} className="">
-					<a style={{ color: 'white' }} className="active item" href="#">
-						<h2>Moviely</h2>
-					</a>
-					<a style={{ color: 'white' }} className="item" href="#">
-						Messages
-					</a>
-					<a style={{ color: 'white' }} className="item" href="#">
-						Friends
-					</a>
-					<div style={{flex: '1'}}>
+				<div style={{ display: 'flex', width: '100%', margin: '0 4%' }}>
+					<div style={{ display: 'flex' }}>
+						<a style={{ color: 'white' }} className="active item" href="#">
+							<h1>
+								<i className="ui movie icon" /> Moviely
+							</h1>
+						</a>
+						<a style={{ color: 'white' }} className="item" href="#">
+							Messages
+						</a>
+						<a style={{ color: 'white' }} className="item" href="#">
+							Friends
+						</a>
+						<div className="item" />
+					</div>
+
+					<div style={{ flex: 'auto' }}>
 						<SearchBar />
 					</div>
-					
+
 					<div className="right menu">
 						<div className="item" />
 						{this.renderButtons()}
