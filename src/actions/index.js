@@ -27,9 +27,26 @@ export const featuredMovies = () => async (dispatch) => {
 		'https://api.themoviedb.org/3/trending/20/week?api_key=3e17762214fd39739a9e5f272003618d'
 	);
 
-	console.log(response.data);
 
 	dispatch({ type: 'FEATURED_MOVIES', payload: response.data.results });
+};
+
+export const highestRatedMovies = () => async (dispatch) => {
+	const response = await axios.get(
+		'https://api.themoviedb.org/3/movie/top_rated?api_key=3e17762214fd39739a9e5f272003618d&language=en-US&page=1'
+	);
+
+
+	dispatch({ type: 'HIGHEST_MOVIES', payload: response.data.results });
+};
+
+export const latestMoviesData = () => async (dispatch) => {
+	const response = await axios.get(
+		'https://api.themoviedb.org/3/movie/upcoming?api_key=3e17762214fd39739a9e5f272003618d&language=en-US&page=1'
+	);
+
+
+	dispatch({ type: 'LATEST_MOVIES', payload: response.data.results });
 };
 
 export const searchMovies = (input) => async (dispatch) => {

@@ -7,6 +7,8 @@ import guestSignInReducer from './guestSignInReducer';
 import searchTermReducer from './searchTermReducer';
 import windowRouteReducer from './windowRouteReducer';
 import featuredMovieReducer from './featuredMovieReducer';
+import highestRatedReducer from './highestRatedReducer';
+import latestMovieReducer from './latestMovieReducer';
 
 export default combineReducers({
 	moviesReducer,
@@ -16,5 +18,7 @@ export default combineReducers({
 	guestSignInData: guestSignInReducer,
 	searchTerm: searchTermReducer,
 	windowRoute: windowRouteReducer,
-	featuredMoviesData: featuredMovieReducer
+	featuredMoviesData: featuredMovieReducer,
+	highestRatedData: highestRatedReducer,
+	latestMovies: latestMovieReducer
 });

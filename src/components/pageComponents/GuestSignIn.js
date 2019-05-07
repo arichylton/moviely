@@ -5,6 +5,10 @@ import '../componentStyles/text.css';
 import '../componentStyles/profile.css';
 
 class GuestSignIn extends React.Component {
+	componentDidMount() {
+		window.scroll(0, 0);
+	}
+
 	renderGuestProfile() {
 		if (!this.props.guestSignInData.success) {
 			return (

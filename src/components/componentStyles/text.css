@@ -6,6 +6,14 @@
     width: 150px; 
 }
 
+.crop-title {
+    margin: 20px 0;
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    width: 300px; 
+}
+
 .myFont {
     font-family: 'PT Sans', sans-serif;
     color: white;

@@ -5,6 +5,10 @@ import '../componentStyles/text.css';
 import '../componentStyles/profile.css';
 
 class SignIn extends React.Component {
+	componentDidMount() {
+		window.scroll(0, 0);
+	}
+
 	renderProfile() {
 		if (!this.props.windowRoute.includes(`true`)) {
 			return (
@@ -59,9 +63,7 @@ class SignIn extends React.Component {
 
 	renderLeftRail = () => {
 		if (!this.props.windowRoute.includes(`true`)) {
-			return (
-				null
-			);
+			return null;
 		} else {
 			return (
 				<div>
@@ -101,9 +103,7 @@ class SignIn extends React.Component {
 
 	renderTitle = () => {
 		if (!this.props.windowRoute.includes(`true`)) {
-			return (
-				null
-			);
+			return null;
 		} else {
 			return (
 				<div style={{ paddingTop: 140, marginLeft: '20%' }}>

@@ -9,7 +9,7 @@ class Header extends React.Component {
 	componentDidMount() {
 		if (window.location.href.includes('true')) {
 			this.props.route(window.location.href);
-		};
+		}
 	}
 
 	onSignInClick = () => {
@@ -84,14 +84,14 @@ class Header extends React.Component {
 				style={{
 					display: 'flex',
 					padding: '5px 0',
-					backgroundColor: 'rgba(17, 38, 66, .94)',
+					backgroundImage: 'linear-gradient(to bottom right, rgba(13, 30, 51.9), rgba(20, 13, 51, 0.85))',
 					boxShadow: '0 2px 2px rgb(13, 30, 51, .2)'
 				}}
 				className="ui fixed menu"
 			>
 				<div style={{ display: 'flex', width: '100%', margin: '0 4%' }}>
 					<div style={{ display: 'flex', flex: '0 1 auto' }}>
-						<Link to="/" style={{ color: 'white' }} className="item">
+						<Link to="/" onClick={() => window.scroll(0, 0)} style={{ color: 'white' }} className="item">
 							<h1>
 								<i className="ui movie icon" /> Moviely
 							</h1>
@@ -122,7 +122,7 @@ class Header extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		isSignedIn: state.isSignedIn,
-		guestSignInData: state.guestSignInData,		
+		guestSignInData: state.guestSignInData
 	};
 };
 
