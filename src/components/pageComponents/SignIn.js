@@ -9,9 +9,9 @@ class SignIn extends React.Component {
 		if (!this.props.windowRoute.includes(`true`)) {
 			return (
 				<div>
-					<h2 style={{ textAlign: 'center', wordSpacing: '1px' }} className="ui item">
-						Please Sign In Through <span style={{ color: 'rgb(200, 50, 102)' }}>'Get Auth Token</span>
-					</h2>
+					<h3 style={{ textAlign: 'center', wordSpacing: '1px', paddingTop: 140 }} className="ui item">
+						Please Sign In Through <span style={{ color: 'rgb(200, 50, 102)' }}>Get Auth Token</span>
+					</h3>
 				</div>
 			);
 		} else {

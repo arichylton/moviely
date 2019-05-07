@@ -4,11 +4,12 @@ import { searchMovies } from '../actions';
 
 import './componentStyles/text.css';
 
-class App extends React.Component {
+const placeHolderImage = require('../pics/background-1.jpg');
 
+class App extends React.Component {
 	renderMovieList = () => {
-		if (this.props.guestSignInData.success) {
-			return this.props.movies.map((movie) => {
+		return this.props.movies.map((movie) => {
+			if (movie.poster_path === null) {
 				return (
 					<div key={movie.id} style={{ margin: '30px 20px' }} className="content">
 						<div>
@@ -17,12 +18,35 @@ class App extends React.Component {
 							</h4>
 							<h5 style={{ margin: '5px auto 15px auto', color: 'rgb(200, 50, 102)' }} className="crop">
 								<i style={{ marginRight: 4 }} className="ui star icon" />
-								{`${movie.vote_average}`}
+								{movie.vote_average}
 							</h5>
 							<img
 								style={{
-									maxWidth: 200,
-									minWidth: 170,
+									width: 180,
+									height: 250,
+									borderRadius: 10,
+									boxShadow: '4px 4px 4px rgb(6, 20, 40)'
+								}}
+								alt={`${movie.title} pic`}
+								src={placeHolderImage}
+							/>
+						</div>
+					</div>
+				);
+			} else {
+				return (
+					<div key={movie.id} style={{ margin: '30px 20px' }} className="content">
+						<div>
+							<h4 style={{ margin: '9px auto' }} className="crop">
+								{movie.title}
+							</h4>
+							<h5 style={{ margin: '5px auto 15px auto', color: 'rgb(200, 50, 102)' }} className="crop">
+								<i style={{ marginRight: 4 }} className="ui star icon" />
+								{movie.vote_average}
+							</h5>
+							<img
+								style={{
+									width: 180,
 									height: 250,
 									borderRadius: 10,
 									boxShadow: '4px 4px 4px rgb(6, 20, 40)'
@@ -33,48 +57,84 @@ class App extends React.Component {
 						</div>
 					</div>
 				);
-			});
-		} else {
-			return this.props.movies.map((movie) => {
+			}
+		});
+	};
+
+	renderTVList = () => {
+		return this.props.tvShows.map((show) => {
+			if (show.poster_path === null) {
 				return (
-					<div key={movie.id} style={{ margin: '30px 20px' }} className="content">
+					<div key={show.id} style={{ margin: '30px 20px' }} className="content">
 						<div>
 							<h4 style={{ margin: '9px auto' }} className="crop">
-								{movie.title}
+								{show.name}
 							</h4>
 							<h5 style={{ margin: '5px auto 15px auto', color: 'rgb(200, 50, 102)' }} className="crop">
 								<i style={{ marginRight: 4 }} className="ui star icon" />
-								{`${movie.vote_average}`}
+								{show.vote_average}
 							</h5>
 							<img
 								style={{
-									maxWidth: 200,
-									minWidth: 170,
+									width: 180,
 									height: 250,
 									borderRadius: 10,
 									boxShadow: '4px 4px 4px rgb(6, 20, 40)'
 								}}
-								alt={`${movie.title} pic`}
-								src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+								alt={`${show.name} pic`}
+								src={placeHolderImage}
 							/>
 						</div>
 					</div>
 				);
-			});
-		}
+			} else {
+				return (
+					<div key={show.id} style={{ margin: '30px 20px' }} className="content">
+						<div>
+							<h4 style={{ margin: '9px auto' }} className="crop">
+								{show.name}
+							</h4>
+							<h5 style={{ margin: '5px auto 15px auto', color: 'rgb(200, 50, 102)' }} className="crop">
+								<i style={{ marginRight: 4 }} className="ui star icon" />
+								{show.vote_average}
+							</h5>
+							<img
+								style={{
+									width: 180,
+									height: 250,
+									borderRadius: 10,
+									boxShadow: '4px 4px 4px rgb(6, 20, 40)'
+								}}
+								alt={`${show.name} pic`}
+								src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
+							/>
+						</div>
+					</div>
+				);
+			}
+		});
 	};
 
 	searchResultsRender = () => {
 		if (!this.props.searchTerm) {
-			return (
-				<h3 className="h1-content">Search for cool movies</h3>				
-			)
+			return <h3>Search for cool movies and TV shows</h3>;
 		} else {
 			return (
-				<h3>Search Results for <span style={{color: 'rgb(200, 50, 102)'}}>{this.props.searchTerm.charAt(0).toUpperCase() + this.props.searchTerm.slice(1)}</span></h3>
-			)
+				<div>
+					<h3>
+						Search Results for{' '}
+						<span style={{ color: 'rgb(200, 50, 102)' }}>
+							{this.props.searchTerm.charAt(0).toUpperCase() + this.props.searchTerm.slice(1)}
+						</span>
+					</h3>
+					<h2 style={{ marginTop: '90px' }}>Movies</h2>
+					<div className="ui centered grid">{this.renderMovieList()}</div>
+					<h2 style={{ marginTop: '100px' }}>TV Shows</h2>
+					<div className="ui centered grid">{this.renderTVList()}</div>
+				</div>
+			);
 		}
-	}
+	};
 
 	render() {
 		if (this.props.loading) {
@@ -92,10 +152,7 @@ class App extends React.Component {
 		return (
 			<div>
 				<div className="ui container">
-					<div style={{ marginTop: 140 }}>
-						{this.searchResultsRender()}
-						<div className="ui centered grid">{this.renderMovieList()}</div>
-					</div>
+					<div style={{ marginTop: 140 }}>{this.searchResultsRender()}</div>
 				</div>
 			</div>
 		);
@@ -107,7 +164,8 @@ const mapStateToProps = (state) => {
 		movies: state.moviesReducer,
 		loading: state.loading,
 		guestSignInData: state.guestSignInData,
-		searchTerm: state.searchTerm
+		searchTerm: state.searchTerm,
+		tvShows: state.TvReducer
 	};
 };
 

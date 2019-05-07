@@ -1,6 +1,7 @@
 import React from 'react';
 import { searchMovies, loading, searchTerm } from '../actions';
 import { connect } from 'react-redux';
+import history from '../history';
 
 class SearchBar extends React.Component {
 	state = { term: '' };
@@ -9,6 +10,7 @@ class SearchBar extends React.Component {
 		event.preventDefault();
 		this.props.loading(true);
 		this.props.searchMovies(this.state.term);
+		history.push('/search');
 	};
 
 	render() {

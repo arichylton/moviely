@@ -9,7 +9,7 @@ class GuestSignIn extends React.Component {
 		if (!this.props.guestSignInData.success) {
 			return (
 				<div>
-					<h3 style={{ textAlign: 'center', wordSpacing: '1px' }} className="ui item">
+					<h3 style={{ textAlign: 'center', wordSpacing: '1px', paddingTop: 140 }} className="ui item">
 						{' '}
 						Please Sign In Through <span style={{ color: 'rgb(200, 50, 102)' }}>'Sign in as Guest'</span>
 					</h3>
