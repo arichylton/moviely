@@ -6,6 +6,7 @@ import loadingReducer from './loadingReducer';
 import guestSignInReducer from './guestSignInReducer';
 import searchTermReducer from './searchTermReducer';
 import windowRouteReducer from './windowRouteReducer';
+import featuredMovieReducer from './featuredMovieReducer';
 
 export default combineReducers({
 	moviesReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
 	isSignedIn: signInReducer,
 	guestSignInData: guestSignInReducer,
 	searchTerm: searchTermReducer,
-	windowRoute: windowRouteReducer
+	windowRoute: windowRouteReducer,
+	featuredMoviesData: featuredMovieReducer
 });

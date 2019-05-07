@@ -23,12 +23,14 @@ export const signOut = () => {
 };
 
 export const featuredMovies = () => async (dispatch) => {
-	const response = await axios.get('https://api.themoviedb.org/3/trending/all/week?api_key=3e17762214fd39739a9e5f272003618d');
+	const response = await axios.get(
+		'https://api.themoviedb.org/3/trending/20/week?api_key=3e17762214fd39739a9e5f272003618d'
+	);
 
 	console.log(response.data);
 
-	dispatch({type: 'FEATURED_MOVIES', payload: response.data})
-}
+	dispatch({ type: 'FEATURED_MOVIES', payload: response.data.results });
+};
 
 export const searchMovies = (input) => async (dispatch) => {
 	const response = await axios.get(
@@ -57,15 +59,15 @@ export const route = (data) => {
 	return {
 		type: 'ROUTE',
 		payload: data
-	}
-}
+	};
+};
 
 export const searchTerm = (input) => {
 	return {
 		type: 'SEARCH_TERM',
 		payload: input
-	}
-}
+	};
+};
 
 export const loading = (boolean) => {
 	return {

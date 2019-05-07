@@ -123,7 +123,7 @@ class App extends React.Component {
 				<div>
 					<h3>
 						Search Results for{' '}
-						<span style={{ color: 'rgb(200, 50, 102)' }}>
+						<span style={{ color: '#54c8ff' }}>
 							{this.props.searchTerm.charAt(0).toUpperCase() + this.props.searchTerm.slice(1)}
 						</span>
 					</h3>

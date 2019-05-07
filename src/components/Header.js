@@ -6,6 +6,12 @@ import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
 class Header extends React.Component {
+	componentDidMount() {
+		if (window.location.href.includes('true')) {
+			this.props.route(window.location.href);
+		};
+	}
+
 	onSignInClick = () => {
 		if (!window.location.href.includes(`true`) && !this.props.guestSignInData.success) {
 			this.props.requestAuthToken();
@@ -18,7 +24,7 @@ class Header extends React.Component {
 		if (window.location.href.includes('true')) {
 			return (
 				<Link to="/profile" className="ui item">
-					<button onClick={() => this.props.route(window.location.href)} className="ui button primary">Profile</button>
+					<button className="ui button primary">Profile</button>
 				</Link>
 			);
 		} else {
@@ -78,7 +84,7 @@ class Header extends React.Component {
 				style={{
 					display: 'flex',
 					padding: '5px 0',
-					backgroundColor: 'rgb(17, 38, 66)',
+					backgroundColor: 'rgba(17, 38, 66, .94)',
 					boxShadow: '0 2px 2px rgb(13, 30, 51, .2)'
 				}}
 				className="ui fixed menu"
