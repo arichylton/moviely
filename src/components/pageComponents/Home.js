@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 
 import { connect } from 'react-redux';
-import { featuredMovies, highestRatedMovies, latestMoviesData } from '../../actions';
+import { featuredMovies, highestRatedMovies, latestMoviesData, loading } from '../../actions';
 import '../componentStyles/home.css';
 import '../componentStyles/text.css';
 
@@ -14,54 +14,52 @@ class Home extends React.Component {
 	}
 
 	renderFeaturedList = () => {
-		if (!this.props.featuredMoviesData) {
-			return <div>loading</div>;
-		} else {
-			return this.props.featuredMoviesData.map((movie, index) => {
-				if (index < 10) {
-					return (
-						<div key={movie.id}>
-							<img
-								className="home-image"
-								src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-							/>
-							<div
-								style={{
-									position: 'absolute',
-									top: '18%',
-									left: '1.5%'
-								}}
-							>
-								<div style={{ padding: '.6% 5%', margin: 'auto 40px', width: '100%' }}>
-									<h1
-										style={{
-											color: 'white',
-											fontSize: 30,
-											letterSpacing: '2px',
-											textShadow: 'black 1px 2px 3px'
-										}}
-									>
-										{movie.title}
-										{movie.name}
-									</h1>
-									<h4 className="crop-title">{movie.overview}</h4>
-									<h4
-										style={{
-											color: 'white',
-											margin: '5px 0',
-											fontSize: 20,
-											textShadow: 'black 1px 2px 2px'
-										}}
-									>
-										<i className="ui star icon" /> {movie.vote_average}
-									</h4>
-								</div>
+		return this.props.featuredMoviesData.map((movie, index) => {
+			if (index < 5) {
+				return (
+					<div key={movie.id}>
+						<img
+							className="home-image"
+							src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+						/>
+						<div
+							style={{
+								position: 'absolute',
+								top: '18%',
+								left: '1.5%'
+							}}
+						>
+							<div style={{ padding: '.6% 5%', margin: 'auto 40px', width: '100%' }}>
+								<h1
+									style={{
+										color: 'white',
+										fontSize: 30,
+										letterSpacing: '2px',
+										textShadow: 'black 1px 2px 3px'
+									}}
+								>
+									{movie.title}
+									{movie.name}
+								</h1>
+								<h4 style={{ textShadow: 'black 1px 2px 2px' }} className="crop-title">
+									{movie.overview}
+								</h4>
+								<h4
+									style={{
+										color: 'white',
+										margin: '5px 0',
+										fontSize: 20,
+										textShadow: 'black 1px 2px 2px'
+									}}
+								>
+									<i className="ui star icon" /> {movie.vote_average}
+								</h4>
 							</div>
 						</div>
-					);
-				}
-			});
-		}
+					</div>
+				);
+			}
+		});
 	};
 
 	renderFeaturedCarousel = () => {
@@ -77,7 +75,8 @@ class Home extends React.Component {
 							borderRadius: '10px',
 							width: 180,
 							height: 250,
-							margin: 'auto'
+							margin: 'auto',
+							cursor: 'pointer'
 						}}
 						src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 					/>
@@ -99,7 +98,8 @@ class Home extends React.Component {
 							borderRadius: '10px',
 							width: 180,
 							height: 250,
-							margin: 'auto'
+							margin: 'auto',
+							cursor: 'pointer'
 						}}
 						src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 					/>
@@ -121,7 +121,8 @@ class Home extends React.Component {
 							borderRadius: '10px',
 							width: 180,
 							height: 250,
-							margin: 'auto'
+							margin: 'auto',
+							cursor: 'pointer'
 						}}
 						src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 					/>
@@ -138,7 +139,7 @@ class Home extends React.Component {
 			draggable: false,
 			autoplay: true,
 			infinite: true,
-			speed: 1000,
+			speed: 700,
 			slidesToShow: 1,
 			slidesToScroll: 1
 		};
@@ -224,4 +225,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, { featuredMovies, highestRatedMovies, latestMoviesData })(Home);
+export default connect(mapStateToProps, { featuredMovies, highestRatedMovies, latestMoviesData, loading })(Home);

@@ -7,10 +7,10 @@ import GuestSignIn from './pageComponents/GuestSignIn';
 import SignIn from './pageComponents/SignIn';
 import Home from './pageComponents/Home';
 import history from '../history';
-
 import './componentStyles/app.css';
 
 class App extends React.Component {
+
 	render() {
 		return (
 			<Router history={history}>

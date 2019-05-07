@@ -8,5 +8,6 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    box-shadow: 0 2px 5px rgba(5, 5, 5, 0.726)
+    box-shadow: 0 2px 5px rgba(5, 5, 5, 0.726);
+    cursor: pointer;
 }
