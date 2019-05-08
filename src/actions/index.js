@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history';
 
 export const requestAuthToken = () => async (dispatch) => {
 	const response = await axios.get(
@@ -23,16 +24,19 @@ export const signOut = () => {
 };
 
 export const findMovie = (id) => async (dispatch) => {
+
 	const response = await axios.get(
 		`https://api.themoviedb.org/3/movie/${id}?api_key=3e17762214fd39739a9e5f272003618d&language=en-US`
 	);
 
-	dispatch({ type: 'FIND_MOVIE', payload: response.data });
+	await dispatch({ type: 'FIND_MOVIE', payload: response.data });
+
+	history.push(`/movie/${id}`);
 };
 
 export const featuredMovies = () => async (dispatch) => {
 	const response = await axios.get(
-		'https://api.themoviedb.org/3/trending/20/week?api_key=3e17762214fd39739a9e5f272003618d'
+		'https://api.themoviedb.org/3/trending/movie/week?api_key=3e17762214fd39739a9e5f272003618d'
 	);
 
 

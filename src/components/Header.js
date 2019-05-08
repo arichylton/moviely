@@ -91,16 +91,41 @@ class Header extends React.Component {
 			>
 				<div style={{ display: 'flex', width: '100%', margin: '0 4%' }}>
 					<div style={{ display: 'flex', flex: '0 1 auto' }}>
-						<Link to="/" onClick={() => window.scroll(0, 0)} style={{ color: 'white' }} className="item">
+						<Link
+							to="/"
+							onClick={() =>
+								window.scrollTo({
+									top: 0,
+									behavior: 'smooth'
+								})}
+							style={{ color: 'white' }}
+							className="item"
+						>
 							<h1>
 								<i className="ui movie icon" /> Moviely
 							</h1>
 						</Link>
-						<a style={{ color: 'white' }} className="item" href="#">
-							Messages
+						<a
+							style={{ color: 'white' }}
+							className="item"
+							onClick={() =>
+								window.scrollTo({
+									top: 1000,
+									behavior: 'smooth'
+								})}
+						>
+							Featured
 						</a>
-						<a style={{ color: 'white' }} className="item" href="#">
-							Friends
+						<a
+							style={{ color: 'white' }}
+							className="item"
+							onClick={() =>
+								window.scrollTo({
+									top: 1600,
+									behavior: 'smooth'
+								})}
+						>
+							Highest Rated
 						</a>
 						<div className="item" />
 					</div>

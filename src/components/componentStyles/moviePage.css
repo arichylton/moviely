@@ -1,0 +1,39 @@
+.profile-background {
+    position: relative;
+	min-height: 100vh;
+	height: 100%;
+	width: 100%;
+    background-image: linear-gradient(to bottom right, rgb(13, 30, 51), rgba(47, 13, 51, 0.904)), url(../../pics/profile-background.jpg);
+	background-size: cover;
+	background-position: center;
+    background-attachment: fixed;
+
+    color: white
+}
+
+.rail {
+    position: absolute;
+    background-image: linear-gradient(to bottom right, rgb(13, 30, 51), rgba(47, 13, 51, 0.904));
+    background-attachment: fixed;
+    height: 100%;
+    width: 20%;
+    margin-right: 50;
+}
+
+.colorb {
+    text-align: center;
+    border-radius: 10px;
+    padding: 2.5% 0;
+    position: fixed;
+    left: 2.5%;
+    background-color: rgba(13, 23, 65, 0.507);
+    width: 15%;
+}
+
+.textb {
+    text-align: center;
+    border-radius: 10px;
+    position: fixed;
+    left: 2.5%;
+    width: 15%;
+}

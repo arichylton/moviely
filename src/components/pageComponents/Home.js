@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import history from '../../history';
 
 import { featuredMovies, highestRatedMovies, latestMoviesData, loading, findMovie } from '../../actions';
 import '../componentStyles/home.css';
@@ -14,22 +15,18 @@ class Home extends React.Component {
 		this.props.latestMoviesData();
 	}
 
-	onMovieClick = (id) => {
-		this.props.findMovie(id);
-	}
-
 	renderFeaturedList = () => {
 		return this.props.featuredMoviesData.map((movie, index) => {
 			if (index === 0) {
 				return (
 					<div key={movie.id}>
-						<Link to={`/movie/${movie.id}`} onClick={() => this.onMovieClick(movie.id)}>
+						<a onClick={() => this.props.findMovie(movie.id)}>
 							{' '}
 							<img
 								className="home-image"
 								src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
 							/>
-						</Link>
+						</a>
 
 						<div
 							style={{
@@ -78,9 +75,8 @@ class Home extends React.Component {
 				<div style={{ padding: '0 1%' }} key={movie.id}>
 					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
 						{movie.title}
-						{movie.name}
 					</h4>
-					<Link to={`/movie/${movie.id}`} onClick={() => this.onMovieClick(movie.id)}>
+					<a onClick={() => this.props.findMovie(movie.id)}>
 						<img
 							style={{
 								borderRadius: '10px',
@@ -91,7 +87,7 @@ class Home extends React.Component {
 							}}
 							src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 						/>
-					</Link>
+					</a>
 				</div>
 			);
 		});
@@ -103,9 +99,8 @@ class Home extends React.Component {
 				<div style={{ padding: '0 1%' }} key={movie.id} onClick={() => this.onMovieClick(movie.id)}>
 					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
 						{movie.title}
-						{movie.name}
 					</h4>
-					<Link to={`/movie/${movie.id}`}>
+					<a onClick={() => this.props.findMovie(movie.id)}>
 						<img
 							style={{
 								borderRadius: '10px',
@@ -116,7 +111,7 @@ class Home extends React.Component {
 							}}
 							src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 						/>
-					</Link>
+					</a>
 				</div>
 			);
 		});
@@ -128,9 +123,8 @@ class Home extends React.Component {
 				<div style={{ padding: '0 1%' }} key={movie.id}>
 					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
 						{movie.title}
-						{movie.name}
 					</h4>
-					<Link to={`/movie/${movie.id}`} onClick={() => this.onMovieClick(movie.id)}>
+					<a onClick={() => this.props.findMovie(movie.id)}>
 						<img
 							style={{
 								borderRadius: '10px',
@@ -141,7 +135,7 @@ class Home extends React.Component {
 							}}
 							src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 						/>
-					</Link>
+					</a>
 				</div>
 			);
 		});

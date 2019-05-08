@@ -14,14 +14,29 @@
     width: 300px; 
 }
 
-.home-h1:after {
-    width: 350px;
+.moviePage-h1 {
+    letter-spacing: 2px;
+}
+
+.home-h1:after,
+.moviePage-h1:after {
+    
     display: block;
     height: 2px;  
     content: "";  
-    background-color: #54c8ff;
-    margin: 15px 0;    
+    background-color: #54c8ff; 
 }
+
+.home-h1:after {
+    width: 350px;
+    margin: 15px 0;  
+}
+
+.moviePage-h1:after {
+    width: 100px;
+    margin: 25px auto;    
+}
+
 
 .myFont {
     font-family: 'PT Sans', sans-serif;
@@ -57,5 +72,20 @@ h2:after {
 .header-center {
     text-align: center;
     color: white;
+}
+
+.movie-div {
+    margin: 10px 0;
+}
+
+.movie-h4 {
+    font-size: 125%;
+    letter-spacing: 2.5px;
+}
+
+.movie-span {
+    font-size: 90%;
+    margin-left: 10px;
+    letter-spacing: 2px;
 }
 
