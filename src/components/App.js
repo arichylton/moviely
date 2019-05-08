@@ -6,6 +6,7 @@ import MovieSearchList from './MovieSearchList';
 import GuestSignIn from './pageComponents/GuestSignIn';
 import SignIn from './pageComponents/SignIn';
 import Home from './pageComponents/Home';
+import MoviePage from './pageComponents/MoviePage';
 import history from '../history';
 import './componentStyles/app.css';
 
@@ -21,6 +22,7 @@ class App extends React.Component {
 						<Route path="/search" exact component={MovieSearchList} />
 						<Route path="/profile/guest" exact component={GuestSignIn} />
 						<Route path="/profile" exact component={SignIn} />
+						<Route path="/movie/:id" exact component={MoviePage} />
 					</Switch>
 				</div>
 			</Router>

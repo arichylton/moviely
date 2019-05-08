@@ -1,8 +1,9 @@
 import React from 'react';
 import Slider from 'react-slick';
-
 import { connect } from 'react-redux';
-import { featuredMovies, highestRatedMovies, latestMoviesData, loading } from '../../actions';
+import { Link } from 'react-router-dom';
+
+import { featuredMovies, highestRatedMovies, latestMoviesData, loading, findMovie } from '../../actions';
 import '../componentStyles/home.css';
 import '../componentStyles/text.css';
 
@@ -13,15 +14,23 @@ class Home extends React.Component {
 		this.props.latestMoviesData();
 	}
 
+	onMovieClick = (id) => {
+		this.props.findMovie(id);
+	}
+
 	renderFeaturedList = () => {
 		return this.props.featuredMoviesData.map((movie, index) => {
-			if (index < 5) {
+			if (index === 0) {
 				return (
 					<div key={movie.id}>
-						<img
-							className="home-image"
-							src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-						/>
+						<Link to={`/movie/${movie.id}`} onClick={() => this.onMovieClick(movie.id)}>
+							{' '}
+							<img
+								className="home-image"
+								src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+							/>
+						</Link>
+
 						<div
 							style={{
 								position: 'absolute',
@@ -30,6 +39,7 @@ class Home extends React.Component {
 							}}
 						>
 							<div style={{ padding: '.6% 5%', margin: 'auto 40px', width: '100%' }}>
+								<h1 className="home-h1">Movie Of The Week:</h1>
 								<h1
 									style={{
 										color: 'white',
@@ -70,16 +80,18 @@ class Home extends React.Component {
 						{movie.title}
 						{movie.name}
 					</h4>
-					<img
-						style={{
-							borderRadius: '10px',
-							width: 180,
-							height: 250,
-							margin: 'auto',
-							cursor: 'pointer'
-						}}
-						src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-					/>
+					<Link to={`/movie/${movie.id}`} onClick={() => this.onMovieClick(movie.id)}>
+						<img
+							style={{
+								borderRadius: '10px',
+								width: 180,
+								height: 250,
+								margin: 'auto',
+								cursor: 'pointer'
+							}}
+							src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+						/>
+					</Link>
 				</div>
 			);
 		});
@@ -88,21 +100,23 @@ class Home extends React.Component {
 	renderLatestCarousel = () => {
 		return this.props.latestMovies.map((movie, index) => {
 			return (
-				<div style={{ padding: '0 1%' }} key={movie.id}>
+				<div style={{ padding: '0 1%' }} key={movie.id} onClick={() => this.onMovieClick(movie.id)}>
 					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
 						{movie.title}
 						{movie.name}
 					</h4>
-					<img
-						style={{
-							borderRadius: '10px',
-							width: 180,
-							height: 250,
-							margin: 'auto',
-							cursor: 'pointer'
-						}}
-						src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-					/>
+					<Link to={`/movie/${movie.id}`}>
+						<img
+							style={{
+								borderRadius: '10px',
+								width: 180,
+								height: 250,
+								margin: 'auto',
+								cursor: 'pointer'
+							}}
+							src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+						/>
+					</Link>
 				</div>
 			);
 		});
@@ -116,16 +130,18 @@ class Home extends React.Component {
 						{movie.title}
 						{movie.name}
 					</h4>
-					<img
-						style={{
-							borderRadius: '10px',
-							width: 180,
-							height: 250,
-							margin: 'auto',
-							cursor: 'pointer'
-						}}
-						src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-					/>
+					<Link to={`/movie/${movie.id}`} onClick={() => this.onMovieClick(movie.id)}>
+						<img
+							style={{
+								borderRadius: '10px',
+								width: 180,
+								height: 250,
+								margin: 'auto',
+								cursor: 'pointer'
+							}}
+							src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+						/>
+					</Link>
 				</div>
 			);
 		});
@@ -198,7 +214,7 @@ class Home extends React.Component {
 		return (
 			<div>
 				<div className="ui item">
-					<Slider {...featuredSettings}>{this.renderFeaturedList()}</Slider>
+					{this.renderFeaturedList()}
 				</div>
 				<div className="ui container" style={{ margin: '160px 0' }}>
 					<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Featured Movies</h2>
@@ -225,4 +241,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, { featuredMovies, highestRatedMovies, latestMoviesData, loading })(Home);
+export default connect(mapStateToProps, { featuredMovies, highestRatedMovies, latestMoviesData, loading, findMovie })(Home);

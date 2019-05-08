@@ -9,6 +9,7 @@ import windowRouteReducer from './windowRouteReducer';
 import featuredMovieReducer from './featuredMovieReducer';
 import highestRatedReducer from './highestRatedReducer';
 import latestMovieReducer from './latestMovieReducer';
+import findMovieReducer from './findMovieReducer';
 
 export default combineReducers({
 	moviesReducer,
@@ -20,5 +21,6 @@ export default combineReducers({
 	windowRoute: windowRouteReducer,
 	featuredMoviesData: featuredMovieReducer,
 	highestRatedData: highestRatedReducer,
-	latestMovies: latestMovieReducer
+	latestMovies: latestMovieReducer,
+	movieData: findMovieReducer
 });

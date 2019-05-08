@@ -22,6 +22,14 @@ export const signOut = () => {
 	};
 };
 
+export const findMovie = (id) => async (dispatch) => {
+	const response = await axios.get(
+		`https://api.themoviedb.org/3/movie/${id}?api_key=3e17762214fd39739a9e5f272003618d&language=en-US`
+	);
+
+	dispatch({ type: 'FIND_MOVIE', payload: response.data });
+};
+
 export const featuredMovies = () => async (dispatch) => {
 	const response = await axios.get(
 		'https://api.themoviedb.org/3/trending/20/week?api_key=3e17762214fd39739a9e5f272003618d'

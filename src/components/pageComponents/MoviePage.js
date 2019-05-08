@@ -1,13 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class MoviePage extends React.Component {
     render() {
         return (
-            <div>
-                MoviePage
+            <div style={{paddingTop: 140}}>
+                <h2>{this.props.movieData.title}</h2>
             </div>
         )
     }
 }
 
-export default MoviePage;
+const mapStateToProps = state => {
+    return { movieData: state.movieData }
+}
+
+export default connect(mapStateToProps)(MoviePage);
