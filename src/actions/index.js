@@ -29,6 +29,7 @@ export const findMovie = (id) => async (dispatch) => {
 		`https://api.themoviedb.org/3/movie/${id}?api_key=3e17762214fd39739a9e5f272003618d&language=en-US`
 	);
 
+	console.log(response.data);
 	await dispatch({ type: 'FIND_MOVIE', payload: response.data });
 
 	history.push(`/movie/${id}`);

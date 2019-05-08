@@ -8,6 +8,7 @@ import SearchBar from './SearchBar';
 import './componentStyles/text.css';
 
 class Header extends React.Component {
+
 	componentDidMount() {
 		if (window.location.href.includes('true')) {
 			this.props.route(window.location.href);

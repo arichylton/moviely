@@ -1,8 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import history from '../../history';
 
 import { featuredMovies, highestRatedMovies, latestMoviesData, loading, findMovie } from '../../actions';
 import '../componentStyles/home.css';
@@ -97,7 +95,7 @@ class Home extends React.Component {
 	renderLatestCarousel = () => {
 		return this.props.latestMovies.map((movie, index) => {
 			return (
-				<div style={{ padding: '0 1%' }} key={movie.id} onClick={() => this.onMovieClick(movie.id)}>
+				<div style={{ padding: '0 1%' }} key={movie.id} onClick={() => this.props.findMovie(movie.id)}>
 					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
 						{movie.title}
 					</h4>
