@@ -5,6 +5,8 @@ import { requestAuthToken, signOut, guestSignIn, route } from '../actions';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
+import './componentStyles/text.css';
+
 class Header extends React.Component {
 	componentDidMount() {
 		if (window.location.href.includes('true')) {
@@ -99,7 +101,7 @@ class Header extends React.Component {
 									behavior: 'smooth'
 								})}
 							style={{ color: 'white' }}
-							className="item"
+							className="item grow"
 						>
 							<h1>
 								<i className="ui movie icon" /> Moviely
@@ -107,7 +109,7 @@ class Header extends React.Component {
 						</Link>
 						<a
 							style={{ color: 'white' }}
-							className="item"
+							className="item grow"
 							onClick={() =>
 								window.scrollTo({
 									top: 1000,
@@ -118,7 +120,7 @@ class Header extends React.Component {
 						</a>
 						<a
 							style={{ color: 'white' }}
-							className="item"
+							className="item grow"
 							onClick={() =>
 								window.scrollTo({
 									top: 1600,

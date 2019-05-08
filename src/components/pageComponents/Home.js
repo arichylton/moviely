@@ -10,6 +10,7 @@ import '../componentStyles/text.css';
 
 class Home extends React.Component {
 	componentDidMount() {
+		window.scroll(0,0);
 		this.props.featuredMovies();
 		this.props.highestRatedMovies();
 		this.props.latestMoviesData();
@@ -76,7 +77,7 @@ class Home extends React.Component {
 					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
 						{movie.title}
 					</h4>
-					<a onClick={() => this.props.findMovie(movie.id)}>
+					<a  onClick={() => this.props.findMovie(movie.id)}>
 						<img
 							style={{
 								borderRadius: '10px',
