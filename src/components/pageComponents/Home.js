@@ -95,7 +95,7 @@ class Home extends React.Component {
 	renderLatestCarousel = () => {
 		return this.props.latestMovies.map((movie, index) => {
 			return (
-				<div style={{ padding: '0 1%' }} key={movie.id} onClick={() => this.props.findMovie(movie.id)}>
+				<div style={{ padding: '0 1%' }} key={movie.id}>
 					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
 						{movie.title}
 					</h4>
@@ -187,7 +187,7 @@ class Home extends React.Component {
 			draggable: false,
 			infinite: true,
 			autoplay: true,
-			speed: 2500,
+			speed: 2000,
 			slidesToShow: 5,
 			slidesToScroll: 1,
 			responsive
@@ -198,7 +198,7 @@ class Home extends React.Component {
 			draggable: false,
 			infinite: true,
 			autoplay: true,
-			speed: 3000,
+			speed: 2000,
 			slidesToShow: 5,
 			slidesToScroll: 1,
 			responsive

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchMovies } from '../actions';
+import { searchMovies, findMovie } from '../actions';
 
 import './componentStyles/text.css';
 
@@ -17,19 +17,22 @@ class App extends React.Component {
 								{movie.title}
 							</h4>
 							<h5 style={{ margin: '5px auto 15px auto', color: 'rgb(200, 50, 102)' }} className="crop">
-								<i style={{ marginRight: 4 }} className="ui star icon" />
+								<i style={{ marginRight: 4 }} className="ui heart icon" />
 								{movie.vote_average}
 							</h5>
-							<img
-								style={{
-									width: 180,
-									height: 250,
-									borderRadius: 10,
-									boxShadow: '4px 4px 4px rgb(6, 20, 40)'
-								}}
-								alt={`${movie.title} pic`}
-								src={placeHolderImage}
-							/>
+							<a onClick={() => this.props.findMovie(movie.id)}>
+								<img
+									style={{
+										width: 180,
+										height: 250,
+										borderRadius: 10,
+										cursor: 'pointer',
+										boxShadow: '4px 4px 4px rgb(6, 20, 40)'
+									}}
+									alt={`${movie.title} pic`}
+									src={placeHolderImage}
+								/>
+							</a>
 						</div>
 					</div>
 				);
@@ -41,19 +44,22 @@ class App extends React.Component {
 								{movie.title}
 							</h4>
 							<h5 style={{ margin: '5px auto 15px auto', color: 'rgb(200, 50, 102)' }} className="crop">
-								<i style={{ marginRight: 4 }} className="ui star icon" />
+								<i style={{ marginRight: 4 }} className="ui heart icon" />
 								{movie.vote_average}
 							</h5>
-							<img
-								style={{
-									width: 180,
-									height: 250,
-									borderRadius: 10,
-									boxShadow: '4px 4px 4px rgb(6, 20, 40)'
-								}}
-								alt={`${movie.title} pic`}
-								src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-							/>
+							<a onClick={() => this.props.findMovie(movie.id)}>
+								<img
+									style={{
+										width: 180,
+										height: 250,
+										borderRadius: 10,
+										cursor: 'pointer',
+										boxShadow: '4px 4px 4px rgb(6, 20, 40)'
+									}}
+									alt={`${movie.title} pic`}
+									src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+								/>
+							</a>
 						</div>
 					</div>
 				);
@@ -61,63 +67,11 @@ class App extends React.Component {
 		});
 	};
 
-	renderTVList = () => {
-		return this.props.tvShows.map((show) => {
-			if (show.poster_path === null) {
-				return (
-					<div key={show.id} style={{ margin: '30px 20px' }} className="content">
-						<div>
-							<h4 style={{ margin: '9px auto' }} className="crop">
-								{show.name}
-							</h4>
-							<h5 style={{ margin: '5px auto 15px auto', color: 'rgb(200, 50, 102)' }} className="crop">
-								<i style={{ marginRight: 4 }} className="ui star icon" />
-								{show.vote_average}
-							</h5>
-							<img
-								style={{
-									width: 180,
-									height: 250,
-									borderRadius: 10,
-									boxShadow: '4px 4px 4px rgb(6, 20, 40)'
-								}}
-								alt={`${show.name} pic`}
-								src={placeHolderImage}
-							/>
-						</div>
-					</div>
-				);
-			} else {
-				return (
-					<div key={show.id} style={{ margin: '30px 20px' }} className="content">
-						<div>
-							<h4 style={{ margin: '9px auto' }} className="crop">
-								{show.name}
-							</h4>
-							<h5 style={{ margin: '5px auto 15px auto', color: 'rgb(200, 50, 102)' }} className="crop">
-								<i style={{ marginRight: 4 }} className="ui star icon" />
-								{show.vote_average}
-							</h5>
-							<img
-								style={{
-									width: 180,
-									height: 250,
-									borderRadius: 10,
-									boxShadow: '4px 4px 4px rgb(6, 20, 40)'
-								}}
-								alt={`${show.name} pic`}
-								src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
-							/>
-						</div>
-					</div>
-				);
-			}
-		});
-	};
+	
 
 	searchResultsRender = () => {
 		if (!this.props.searchTerm) {
-			return <h3>Search for cool movies and TV shows</h3>;
+			return <h3>Search for cool movies</h3>;
 		} else {
 			return (
 				<div>
@@ -127,10 +81,7 @@ class App extends React.Component {
 							{this.props.searchTerm.charAt(0).toUpperCase() + this.props.searchTerm.slice(1)}
 						</span>
 					</h3>
-					<h2 style={{ marginTop: '90px' }}>Movies</h2>
 					<div className="ui centered grid">{this.renderMovieList()}</div>
-					<h2 style={{ marginTop: '100px' }}>TV Shows</h2>
-					<div className="ui centered grid">{this.renderTVList()}</div>
 				</div>
 			);
 		}
@@ -165,8 +116,7 @@ const mapStateToProps = (state) => {
 		loading: state.loading,
 		guestSignInData: state.guestSignInData,
 		searchTerm: state.searchTerm,
-		tvShows: state.TvReducer
 	};
 };
 
-export default connect(mapStateToProps, { searchMovies })(App);
+export default connect(mapStateToProps, { searchMovies, findMovie })(App);

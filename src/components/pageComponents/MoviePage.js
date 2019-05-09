@@ -7,6 +7,58 @@ import '../componentStyles/text.css';
 import '../componentStyles/moviePage.css';
 
 class MoviePage extends React.Component {
+	commafy(num) {
+		if (num === 0) {
+			return 'N/A';
+		}
+		var str = num.toString().split('.');
+		if (str[0].length >= 5) {
+			str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+		}
+		if (str[1] && str[1].length >= 5) {
+			str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+		}
+		return str.join('.');
+	}
+
+	profit(revenue, budget) {
+
+		if (revenue === 0 || budget === 0) {
+			return (
+				<span className="movie-span" style={{ color: 'white' }}>
+					N/A
+				</span>
+			);
+		}
+		if (revenue - budget >= 0) {
+			return (
+				<span className="movie-span" style={{ color: '#21ba45' }}>
+					<i className="ui green dollar icon" />
+					{this.commafy(this.props.movieData.revenue - this.props.movieData.budget)}
+				</span>
+			);
+		} else {
+			return (
+				<span className="movie-span" style={{ color: '#CD5C5C' }}>
+					<i className="ui dollar icon" />
+					{this.commafy(this.props.movieData.revenue - this.props.movieData.budget)}
+				</span>
+			);
+		}
+	}
+
+	renderMovieGenre = () => {
+		return this.props.movieData.genres.map((genre, index) => {
+			if (index < 3) {
+				return (
+					<div key={genre.id} style={{ marginRight: 10, fontSize: '90%' }}>
+						-{genre.name}
+					</div>
+				);
+			}
+		});
+	};
+
 	renderMoviePage = () => {
 		if (!this.props.movieData.title) {
 			history.push('/');
@@ -14,7 +66,10 @@ class MoviePage extends React.Component {
 			return (
 				<div style={{ paddingTop: 140 }} className="ui container ">
 					<h1 className="moviePage-h1" style={{ textAlign: 'center', marginBottom: 60 }}>
-						{this.props.movieData.title}
+						{this.props.movieData.title} <br />
+						<span style={{ fontSize: '55%' }}>
+							<i>{this.props.movieData.tagline}</i>
+						</span>
 					</h1>
 					<div className="ui">
 						<div className="ui two column grid">
@@ -25,17 +80,6 @@ class MoviePage extends React.Component {
 								/>
 							</div>
 							<div className="column" style={{ marginTop: 10 }}>
-								<div>
-									<h4 className="movie-h4 ">
-										Title: <span className="movie-span">{this.props.movieData.title} </span>
-									</h4>
-								</div>
-								<div className="movie-div">
-									<h4 className="movie-h4">
-										Released:{' '}
-										<span className="movie-span">{this.props.movieData.release_date}</span>
-									</h4>
-								</div>
 								<div className="movie-div">
 									<h4 className="movie-h4">
 										Runtime:{' '}
@@ -44,6 +88,13 @@ class MoviePage extends React.Component {
 										</span>
 									</h4>
 								</div>
+								<div className="movie-div">
+									<h4 className="movie-h4">
+										Released:{' '}
+										<span className="movie-span">{this.props.movieData.release_date}</span>
+									</h4>
+								</div>
+
 								<div className="movie-div">
 									<h4 className="movie-h4" style={{ display: 'flex' }}>
 										Rating:{' '}
@@ -62,10 +113,40 @@ class MoviePage extends React.Component {
 										</span>
 									</h4>
 								</div>
-
+								<div className="movie-div">
+									<h4 className="movie-h4" style={{ display: 'flex' }}>
+										Genre:{' '}
+										<span className="movie-span" style={{ display: 'flex' }}>
+											{this.renderMovieGenre()}
+										</span>
+									</h4>
+								</div>
 								<div className="movie-div">
 									<h4 className="movie-h4">
-										Title: <span className="movie-span">{this.props.movieData.title}</span>
+										Overview: <div className="movie-p">{this.props.movieData.overview}</div>
+									</h4>
+								</div>
+								<div className="movie-div">
+									<h4 className="movie-h4">
+										Budget:{' '}
+										<span className="movie-span">
+											<i className="ui green dollar icon" />
+											{this.commafy(this.props.movieData.budget)}
+										</span>
+									</h4>
+								</div>
+								<div className="movie-div">
+									<h4 className="movie-h4">
+										Revenue:{' '}
+										<span className="movie-span">
+											<i className="ui green dollar icon" />
+											{this.commafy(this.props.movieData.revenue)}
+										</span>
+									</h4>
+								</div>
+								<div className="movie-div">
+									<h4 className="movie-h4">
+										Profit: {this.profit(this.props.movieData.revenue, this.props.movieData.budget)}
 									</h4>
 								</div>
 							</div>
@@ -77,7 +158,7 @@ class MoviePage extends React.Component {
 	};
 
 	render() {
-		return <div className="profile-background">{this.renderMoviePage()}</div>;
+		return <div className="moviePage-background">{this.renderMoviePage()}</div>;
 	}
 }
 

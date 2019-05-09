@@ -86,7 +86,6 @@ class Header extends React.Component {
 			<div
 				style={{
 					display: 'flex',
-					padding: '5px 0',
 					backgroundImage: 'linear-gradient(to bottom right, rgba(13, 30, 51.9), rgba(20, 13, 51, 0.85))',
 					boxShadow: '0 2px 2px rgb(13, 30, 51, .2)'
 				}}

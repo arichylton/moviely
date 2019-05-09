@@ -69,21 +69,10 @@ export const searchMovies = (input) => async (dispatch) => {
 
 	dispatch(loading(false));
 	dispatch(searchTerm(input));
-	dispatch(searchTVShows(input));
 
 	dispatch({ type: 'SEARCH_MOVIES', payload: response.data.results });
 };
 
-export const searchTVShows = (input) => async (dispatch) => {
-	const response = await axios.get(
-		`https://api.themoviedb.org/3/search/tv?api_key=3e17762214fd39739a9e5f272003618d&language=en-US&query=${input}&page=1`
-	);
-
-	dispatch(loading(false));
-	dispatch(searchTerm(input));
-
-	dispatch({ type: 'SEARCH_TV', payload: response.data.results });
-};
 
 export const route = (data) => {
 	return {
