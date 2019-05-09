@@ -22,7 +22,6 @@ class MoviePage extends React.Component {
 	}
 
 	profit(revenue, budget) {
-
 		if (revenue === 0 || budget === 0) {
 			return (
 				<span className="movie-span" style={{ color: 'white' }}>
@@ -64,8 +63,8 @@ class MoviePage extends React.Component {
 			history.push('/');
 		} else {
 			return (
-				<div style={{ paddingTop: 140 }} className="ui container ">
-					<h1 className="moviePage-h1" style={{ textAlign: 'center', marginBottom: 60 }}>
+				<div style={{ paddingTop: 140 }} className="ui container">
+					<h1 className="moviePage-h1 animated fadeInDown" style={{ textAlign: 'center', marginBottom: 60 }}>
 						{this.props.movieData.title} <br />
 						<span style={{ fontSize: '55%' }}>
 							<i>{this.props.movieData.tagline}</i>
@@ -73,13 +72,13 @@ class MoviePage extends React.Component {
 					</h1>
 					<div className="ui">
 						<div className="ui two column grid">
-							<div className="column" style={{ display: 'flex' }}>
+							<div className="column animated fadeInLeft" style={{ display: 'flex' }}>
 								<img
 									style={{ borderRadius: '10px', maxHeight: '675px', margin: '0 auto' }}
 									src={`https://image.tmdb.org/t/p/w500/${this.props.movieData.poster_path}`}
 								/>
 							</div>
-							<div className="column" style={{ marginTop: 10 }}>
+							<div className="column animated fadeInRight" style={{ marginTop: 10 }}>
 								<div className="movie-div">
 									<h4 className="movie-h4">
 										Runtime:{' '}

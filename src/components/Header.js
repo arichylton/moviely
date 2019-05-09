@@ -104,7 +104,7 @@ class Header extends React.Component {
 							className="item grow"
 						>
 							<h1>
-								<i className="ui movie icon" /> Moviely
+								Moviely
 							</h1>
 						</Link>
 						<a

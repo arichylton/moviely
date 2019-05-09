@@ -8,7 +8,8 @@ import '../componentStyles/text.css';
 
 class Home extends React.Component {
 	componentDidMount() {
-		window.scroll(0,0);
+
+		window.scroll(0, 0);
 		this.props.featuredMovies();
 		this.props.highestRatedMovies();
 		this.props.latestMoviesData();
@@ -34,7 +35,10 @@ class Home extends React.Component {
 								left: '1.5%'
 							}}
 						>
-							<div style={{ padding: '.6% 5%', margin: 'auto 40px', width: '100%' }}>
+							<div
+								style={{ padding: '.6% 5%', margin: 'auto 40px', width: '100%' }}
+								className="animated fadeInLeft"
+							>
 								<h1 className="home-h1">Movie Of The Week:</h1>
 								<h1
 									style={{
@@ -75,7 +79,7 @@ class Home extends React.Component {
 					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
 						{movie.title}
 					</h4>
-					<a  onClick={() => this.props.findMovie(movie.id)}>
+					<a onClick={() => this.props.findMovie(movie.id)}>
 						<img
 							style={{
 								borderRadius: '10px',
@@ -206,9 +210,7 @@ class Home extends React.Component {
 
 		return (
 			<div>
-				<div className="ui item">
-					{this.renderFeaturedList()}
-				</div>
+				<div className="ui item">{this.renderFeaturedList()}</div>
 				<div className="ui container" style={{ margin: '160px 0' }}>
 					<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Featured Movies</h2>
 					<Slider {...featuredCarouselSettings}>{this.renderFeaturedCarousel()}</Slider>
@@ -234,4 +236,6 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, { featuredMovies, highestRatedMovies, latestMoviesData, loading, findMovie })(Home);
+export default connect(mapStateToProps, { featuredMovies, highestRatedMovies, latestMoviesData, loading, findMovie })(
+	Home
+);
