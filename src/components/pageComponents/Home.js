@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import Breakpoint from 'react-socks';
 import { connect } from 'react-redux';
 
 import { featuredMovies, highestRatedMovies, latestMoviesData, loading, findMovie } from '../../actions';

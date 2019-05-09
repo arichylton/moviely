@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import history from '../../history';
 import RatingHearts from './RatingHearts';
+import Breakpoint from 'react-socks';
 
 import '../componentStyles/text.css';
 import '../componentStyles/moviePage.css';
@@ -70,87 +71,270 @@ class MoviePage extends React.Component {
 							<i>{this.props.movieData.tagline}</i>
 						</span>
 					</h1>
-					<div className="ui">
-						<div className="ui two column grid">
-							<div className="column animated fadeInLeft" style={{ display: 'flex' }}>
-								<img
-									style={{ borderRadius: '10px', maxHeight: '675px', margin: '0 auto' }}
-									src={`https://image.tmdb.org/t/p/w500/${this.props.movieData.poster_path}`}
-								/>
-							</div>
-							<div className="column animated fadeInRight" style={{ marginTop: 10 }}>
-								<div className="movie-div">
-									<h4 className="movie-h4">
-										Runtime:{' '}
-										<span className="movie-span">
-											{parseFloat(this.props.movieData.runtime / 60).toFixed(2)} hours
-										</span>
-									</h4>
-								</div>
-								<div className="movie-div">
-									<h4 className="movie-h4">
-										Released:{' '}
-										<span className="movie-span">{this.props.movieData.release_date}</span>
-									</h4>
+					<Breakpoint xlarge only>
+						<div>
+							<div className="ui two column grid">
+								<div
+									className="column animated fadeInLeft"
+									style={{ display: 'flex', justifyContent: 'space-around' }}
+								>
+									<img
+										style={{ borderRadius: '10px', maxHeight: '675px', margin: '0 auto' }}
+										src={`https://image.tmdb.org/t/p/w500/${this.props.movieData.poster_path}`}
+									/>
 								</div>
 
-								<div className="movie-div">
-									<h4 className="movie-h4" style={{ display: 'flex' }}>
-										Rating:{' '}
-										<span className="movie-span">
-											<RatingHearts />
-										</span>
-									</h4>
-								</div>
+								<div className="column animated fadeInRight" style={{ marginTop: 10 }}>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Runtime:{' '}
+											<span className="movie-span">
+												{parseFloat(this.props.movieData.runtime / 60).toFixed(2)} hours
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Released:{' '}
+											<span className="movie-span">{this.props.movieData.release_date}</span>
+										</h4>
+									</div>
 
-								<div className="movie-div">
-									<h4 className="movie-h4">
-										Popularity:{' '}
-										<span className="movie-span">
-											{Math.round(this.props.movieData.popularity)}
-											<i style={{ marginLeft: 5 }} className="ui orange fire icon" />
-										</span>
-									</h4>
-								</div>
-								<div className="movie-div">
-									<h4 className="movie-h4" style={{ display: 'flex' }}>
-										Genre:{' '}
-										<span className="movie-span" style={{ display: 'flex' }}>
-											{this.renderMovieGenre()}
-										</span>
-									</h4>
-								</div>
-								<div className="movie-div">
-									<h4 className="movie-h4">
-										Overview: <div className="movie-p">{this.props.movieData.overview}</div>
-									</h4>
-								</div>
-								<div className="movie-div">
-									<h4 className="movie-h4">
-										Budget:{' '}
-										<span className="movie-span">
-											<i className="ui green dollar icon" />
-											{this.commafy(this.props.movieData.budget)}
-										</span>
-									</h4>
-								</div>
-								<div className="movie-div">
-									<h4 className="movie-h4">
-										Revenue:{' '}
-										<span className="movie-span">
-											<i className="ui green dollar icon" />
-											{this.commafy(this.props.movieData.revenue)}
-										</span>
-									</h4>
-								</div>
-								<div className="movie-div">
-									<h4 className="movie-h4">
-										Profit: {this.profit(this.props.movieData.revenue, this.props.movieData.budget)}
-									</h4>
+									<div className="movie-div">
+										<h4 className="movie-h4" style={{ display: 'flex' }}>
+											Rating:{' '}
+											<span className="movie-span">
+												<RatingHearts />
+											</span>
+										</h4>
+									</div>
+
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Trending:{' '}
+											<span className="movie-span">
+												{Math.round(this.props.movieData.popularity)}
+												<i style={{ marginLeft: 5 }} className="ui orange fire icon" />
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4" style={{ display: 'flex' }}>
+											Genre:{' '}
+											<span className="movie-span" style={{ display: 'flex' }}>
+												{this.renderMovieGenre()}
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Overview: <div className="movie-p">{this.props.movieData.overview}</div>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Budget:{' '}
+											<span className="movie-span">
+												<i className="ui green dollar icon" />
+												{this.commafy(this.props.movieData.budget)}
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Revenue:{' '}
+											<span className="movie-span">
+												<i className="ui green dollar icon" />
+												{this.commafy(this.props.movieData.revenue)}
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Profit:{' '}
+											{this.profit(this.props.movieData.revenue, this.props.movieData.budget)}
+										</h4>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					</Breakpoint>
+					<Breakpoint large only>
+						<div>
+							<div className="ui two column grid">
+								<div
+									className="column animated fadeInLeft"
+									style={{ display: 'flex', justifyContent: 'space-around' }}
+								>
+									<img
+										style={{ borderRadius: '10px', maxHeight: '600px', margin: '0 auto' }}
+										src={`https://image.tmdb.org/t/p/w500/${this.props.movieData.poster_path}`}
+									/>
+								</div>
+
+								<div className="column animated fadeInRight" style={{ marginTop: 10 }}>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Runtime:{' '}
+											<span className="movie-span">
+												{parseFloat(this.props.movieData.runtime / 60).toFixed(2)} hours
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Released:{' '}
+											<span className="movie-span">{this.props.movieData.release_date}</span>
+										</h4>
+									</div>
+
+									<div className="movie-div">
+										<h4 className="movie-h4" style={{ display: 'flex' }}>
+											Rating:{' '}
+											<span className="movie-span">
+												<RatingHearts />
+											</span>
+										</h4>
+									</div>
+
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Trending:{' '}
+											<span className="movie-span">
+												{Math.round(this.props.movieData.popularity)}
+												<i style={{ marginLeft: 5 }} className="ui orange fire icon" />
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4" style={{ display: 'flex' }}>
+											Genre:{' '}
+											<span className="movie-span" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+												{this.renderMovieGenre()}
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Overview: <div className="movie-p">{this.props.movieData.overview}</div>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Budget:{' '}
+											<span className="movie-span">
+												<i className="ui green dollar icon" />
+												{this.commafy(this.props.movieData.budget)}
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Revenue:{' '}
+											<span className="movie-span">
+												<i className="ui green dollar icon" />
+												{this.commafy(this.props.movieData.revenue)}
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Profit:{' '}
+											{this.profit(this.props.movieData.revenue, this.props.movieData.budget)}
+										</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</Breakpoint>
+					<Breakpoint medium down>
+						<div>
+							<div className="ui two column grid" style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+								<div
+									className="column animated fadeInLeft"
+									style={{ display: 'flex', justifyContent: 'space-around' }}
+								>
+									<img
+										style={{ borderRadius: '10px', maxHeight: '500px', margin: '0 auto' }}
+										src={`https://image.tmdb.org/t/p/w500/${this.props.movieData.poster_path}`}
+									/>
+								</div>
+
+								<div className="column animated fadeInRight" style={{ marginTop: 10, textAlign: 'center', width: 350 }}>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Runtime:{' '}
+											<span className="movie-span">
+												{parseFloat(this.props.movieData.runtime / 60).toFixed(2)} hours
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Released:{' '}
+											<span className="movie-span">{this.props.movieData.release_date}</span>
+										</h4>
+									</div>
+
+									<div className="movie-div">
+										<h4 className="movie-h4" style={{ display: 'flex', justifyContent: 'center' }}>
+											Rating:{' '}
+											<span className="movie-span">
+												<RatingHearts />
+											</span>
+										</h4>
+									</div>
+
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Trending:{' '}
+											<span className="movie-span">
+												{Math.round(this.props.movieData.popularity)}
+												<i style={{ marginLeft: 5 }} className="ui orange fire icon" />
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4" style={{ display: 'flex', flexDirection: 'column' }}>
+											Genre:{' '}
+											<span className="movie-span" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
+												{this.renderMovieGenre()}
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Overview: <div className="movie-p">{this.props.movieData.overview}</div>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Budget:{' '}
+											<span className="movie-span">
+												<i className="ui green dollar icon" />
+												{this.commafy(this.props.movieData.budget)}
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Revenue:{' '}
+											<span className="movie-span">
+												<i className="ui green dollar icon" />
+												{this.commafy(this.props.movieData.revenue)}
+											</span>
+										</h4>
+									</div>
+									<div className="movie-div">
+										<h4 className="movie-h4">
+											Profit:{' '}
+											{this.profit(this.props.movieData.revenue, this.props.movieData.budget)}
+										</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</Breakpoint>
 				</div>
 			);
 		}

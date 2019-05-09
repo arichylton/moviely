@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Breakpoint from 'react-socks';
 
 import '../componentStyles/text.css';
 import '../componentStyles/profile.css';
