@@ -56,6 +56,7 @@ class MoviePage extends React.Component {
 					</div>
 				);
 			}
+			return null;
 		});
 	};
 
@@ -79,6 +80,7 @@ class MoviePage extends React.Component {
 									style={{ display: 'flex', justifyContent: 'space-around' }}
 								>
 									<img
+										alt={`${this.props.movieData.title} pic`}
 										style={{ borderRadius: '10px', maxHeight: '675px', margin: '0 auto' }}
 										src={`https://image.tmdb.org/t/p/w500/${this.props.movieData.poster_path}`}
 									/>
@@ -167,6 +169,7 @@ class MoviePage extends React.Component {
 									style={{ display: 'flex', justifyContent: 'space-around' }}
 								>
 									<img
+										alt={`${this.props.movieData.title} pic`}
 										style={{ borderRadius: '10px', maxHeight: '600px', margin: '0 auto' }}
 										src={`https://image.tmdb.org/t/p/w500/${this.props.movieData.poster_path}`}
 									/>
@@ -255,6 +258,7 @@ class MoviePage extends React.Component {
 									style={{ display: 'flex', justifyContent: 'space-around' }}
 								>
 									<img
+										alt={`${this.props.movieData.title} pic`}
 										style={{ borderRadius: '10px', maxHeight: '500px', margin: '0 auto' }}
 										src={`https://image.tmdb.org/t/p/w500/${this.props.movieData.poster_path}`}
 									/>

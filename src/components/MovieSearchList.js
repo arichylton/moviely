@@ -20,7 +20,7 @@ class App extends React.Component {
 								<i style={{ marginRight: 4 }} className="ui heart icon" />
 								{movie.vote_average}
 							</h5>
-							<a onClick={() => this.props.findMovie(movie.id)}>
+							<a href="/#" onClick={() => this.props.findMovie(movie.id)}>
 								<img
 									style={{
 										width: 180,
@@ -47,7 +47,7 @@ class App extends React.Component {
 								<i style={{ marginRight: 4 }} className="ui heart icon" />
 								{movie.vote_average}
 							</h5>
-							<a onClick={() => this.props.findMovie(movie.id)}>
+							<a href="/#" onClick={() => this.props.findMovie(movie.id)}>
 								<img
 									style={{
 										width: 180,
@@ -74,14 +74,14 @@ class App extends React.Component {
 			return <h3>Search for cool movies</h3>;
 		} else {
 			return (
-				<div>
-					<h3>
+				<div >
+					<h3 className="animated fadeInDown">
 						Search Results for{' '}
 						<span style={{ color: '#54c8ff' }}>
 							{this.props.searchTerm.charAt(0).toUpperCase() + this.props.searchTerm.slice(1)}
 						</span>
 					</h3>
-					<div className="ui centered grid">{this.renderMovieList()}</div>
+					<div className="ui centered grid animated slideInUp">{this.renderMovieList()}</div>
 				</div>
 			);
 		}

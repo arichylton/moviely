@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from '../SearchBar';
-import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+import { Header, Modal } from 'semantic-ui-react';
 
 export default class SearchModal extends Component {
 	state = { modalOpen: false };

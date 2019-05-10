@@ -8,6 +8,7 @@ import SignIn from './pageComponents/SignIn';
 import Home from './pageComponents/Home';
 import MoviePage from './pageComponents/MoviePage';
 import history from '../history';
+import Footer from './Footer';
 import './componentStyles/app.css';
 
 class App extends React.Component {
@@ -24,6 +25,7 @@ class App extends React.Component {
 						<Route path="/profile" exact component={SignIn} />
 						<Route path="/movie/:id" exact component={MoviePage} />
 					</Switch>
+					<Footer />
 				</div>
 			</Router>
 		);

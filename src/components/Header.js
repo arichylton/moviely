@@ -82,13 +82,13 @@ class Header extends React.Component {
 				<div>
 					<Breakpoint large up>
 						<div style={{ display: 'flex' }}>
-							<a style={{ color: 'white' }} className="ui item">
+							<a href="/#" style={{ color: 'white' }} className="ui item">
 								<button onClick={this.onSignInClick} className="ui button inverted primary">
 									{' '}
 									Get Auth Token
 								</button>
 							</a>
-							<a className="ui item">
+							<a href="/#" className="ui item">
 								<button className="ui button inverted grey" onClick={() => this.props.guestSignIn()}>
 									Sign in as Guest
 								</button>
@@ -97,14 +97,14 @@ class Header extends React.Component {
 					</Breakpoint>
 					<Breakpoint medium down>
 						<div style={{ display: 'flex' }}>
-							<a style={{ color: 'white' }} className="ui item grow">
+							<a href="/#" style={{ color: 'white' }} className="ui item grow">
 								<i
 									onClick={this.onSignInClick}
 									style={{ color: '#54c8ff', fontSize: '250%', marginLeft: 15 }}
 									className="ui key icon"
 								/>
 							</a>
-							<a className="ui item" style={{ padding: '0 5% 0 0' }}>
+							<a href="/#" className="ui item" style={{ padding: '0 5% 0 0' }}>
 								<i
 									className="user circle outline icon grow"
 									style={{ color: 'rgb(218, 218, 218)', fontSize: '250%' }}
@@ -173,8 +173,9 @@ class Header extends React.Component {
 						</Link>
 						<Breakpoint large up>
 							<div className="ui item">
-								<a
-									style={{ color: 'white' }}
+								<span	
+									
+									style={{ color: 'white', cursor: 'pointer' }}
 									className="item grow"
 									onClick={() =>
 										window.scrollTo({
@@ -183,10 +184,10 @@ class Header extends React.Component {
 										})}
 								>
 									Featured
-								</a>
+								</span>
 
-								<a
-									style={{ color: 'white' }}
+								<span								
+									style={{ color: 'white', cursor: 'pointer' }}
 									className="item grow"
 									onClick={() =>
 										window.scrollTo({
@@ -195,7 +196,7 @@ class Header extends React.Component {
 										})}
 								>
 									Highest Rated
-								</a>
+								</span>
 							</div>
 						</Breakpoint>
 						<div className="item" />

@@ -68,7 +68,7 @@ class SignIn extends React.Component {
 							</div>
 						</div>
 					</Breakpoint>
-					<Breakpoint medium up>
+					<Breakpoint medium down>
 						<div className="header-center animated slideInUp" style={{ marginTop: 80 }}>
 							<div>
 								<h2 className="ui item">

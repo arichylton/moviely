@@ -21,27 +21,30 @@ class Home extends React.Component {
 				return (
 					<div key={movie.id}>
 						<Breakpoint medium up>
-							<a onClick={() => this.props.findMovie(movie.id)}>
+							<a href="/#" onClick={() => this.props.findMovie(movie.id)}>
 								{' '}
 								<img
+									alt={`${movie.title} pic`}
 									className="home-image"
 									src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
 								/>
 							</a>
 						</Breakpoint>
 						<Breakpoint small only>
-							<a onClick={() => this.props.findMovie(movie.id)}>
+							<a href="/#" onClick={() => this.props.findMovie(movie.id)}>
 								{' '}
 								<img
+									alt={`${movie.title} pic`}
 									className="home-image-small"
 									src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
 								/>
 							</a>
 						</Breakpoint>
 						<Breakpoint xsmall only>
-							<a onClick={() => this.props.findMovie(movie.id)}>
+							<a href="/#" onClick={() => this.props.findMovie(movie.id)}>
 								{' '}
 								<img
+									alt={`${movie.title} pic`}
 									className="home-image-very-small"
 									src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
 								/>
@@ -179,6 +182,7 @@ class Home extends React.Component {
 					</div>
 				);
 			}
+			return null;
 		});
 	};
 
@@ -189,8 +193,9 @@ class Home extends React.Component {
 					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
 						{movie.title}
 					</h4>
-					<a onClick={() => this.props.findMovie(movie.id)}>
+					<a href="/#" onClick={() => this.props.findMovie(movie.id)}>
 						<img
+							alt={`${movie.title} pic`}
 							style={{
 								borderRadius: '10px',
 								width: 180,
@@ -213,8 +218,9 @@ class Home extends React.Component {
 					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
 						{movie.title}
 					</h4>
-					<a onClick={() => this.props.findMovie(movie.id)}>
+					<a href="/#" onClick={() => this.props.findMovie(movie.id)}>
 						<img
+							alt={`${movie.title} pic`}
 							style={{
 								borderRadius: '10px',
 								width: 180,
@@ -237,8 +243,9 @@ class Home extends React.Component {
 					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
 						{movie.title}
 					</h4>
-					<a onClick={() => this.props.findMovie(movie.id)}>
+					<a href="/#" onClick={() => this.props.findMovie(movie.id)}>
 						<img
+							alt={`${movie.title} pic`}
 							style={{
 								borderRadius: '10px',
 								width: 180,
@@ -255,17 +262,6 @@ class Home extends React.Component {
 	};
 
 	render() {
-		const featuredSettings = {
-			pauseOnHover: false,
-			fade: true,
-			arrows: false,
-			draggable: false,
-			autoplay: true,
-			infinite: true,
-			speed: 700,
-			slidesToShow: 1,
-			slidesToScroll: 1
-		};
 
 		const responsive = [
 			{
@@ -332,21 +328,21 @@ class Home extends React.Component {
 					<Slider {...featuredCarouselSettings}>{this.renderFeaturedCarousel()}</Slider>
 				</div>
 				<div className="ui container" style={{ margin: '160px 0' }}>
-				<Breakpoint xlarge up>
-					<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Highest Rated Movies</h2>
-				</Breakpoint>
-				<Breakpoint large down>
-					<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Highest Rated Movies</h2>
-				</Breakpoint>
+					<Breakpoint xlarge up>
+						<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Highest Rated Movies</h2>
+					</Breakpoint>
+					<Breakpoint large down>
+						<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Highest Rated Movies</h2>
+					</Breakpoint>
 					<Slider {...featuredCarouselSettings}>{this.renderHighestCarousel()}</Slider>
 				</div>
 				<div className="ui container" style={{ margin: '160px 0' }}>
-				<Breakpoint xlarge up>
-					<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Latest and Upcoming Movies</h2>
-				</Breakpoint>
-				<Breakpoint large down>
-					<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Latest and Upcoming Movies</h2>
-				</Breakpoint>
+					<Breakpoint xlarge up>
+						<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Latest and Upcoming Movies</h2>
+					</Breakpoint>
+					<Breakpoint large down>
+						<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Latest and Upcoming Movies</h2>
+					</Breakpoint>
 					<Slider {...highestCarouselSettings}>{this.renderLatestCarousel()}</Slider>
 				</div>
 			</div>

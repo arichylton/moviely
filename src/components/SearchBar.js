@@ -20,10 +20,10 @@ class SearchBar extends React.Component {
 				style={{ margin: 'auto', maxWidth: '900px' }}
 				onSubmit={this.onFormSubmit}
 			>
-				<input
+				<input				
 					value={this.state.term}
 					onChange={(e) => this.setState({ term: e.target.value })}
-					required
+					required					
 					type="text"
 					placeholder="Search..."
 				/>
