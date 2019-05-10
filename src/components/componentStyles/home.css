@@ -10,3 +10,30 @@
     box-shadow: 0 2px 5px rgba(5, 5, 5, 0.726);
     cursor: pointer;
 }
+
+.home-image-small {
+    position: relative;
+    min-height: 450px;
+    max-height: 100vh;
+    width: 100vw;
+    margin: auto;
+    opacity: .6;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    box-shadow: 0 2px 5px rgba(5, 5, 5, 0.726);
+    cursor: pointer;
+}
+
+.home-image-very-small {
+    position: relative;
+    min-height: 400px;
+    width: 100vw;
+    margin: auto;
+    opacity: .6;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    box-shadow: 0 2px 5px rgba(5, 5, 5, 0.726);
+    cursor: pointer;
+}

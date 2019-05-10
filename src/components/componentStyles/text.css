@@ -19,7 +19,8 @@
 }
 
 .home-h1:after,
-.moviePage-h1:after {
+.moviePage-h1:after,
+.home-h1-small:after {
     
     display: block;
     height: 2px;  
@@ -30,6 +31,11 @@
 .home-h1:after {
     width: 350px;
     margin: 15px 0;  
+}
+
+.home-h1-small:after {
+    width: 250px;
+    margin: 12px 0;  
 }
 
 .moviePage-h1:after {

@@ -9,7 +9,6 @@ import '../componentStyles/text.css';
 
 class Home extends React.Component {
 	componentDidMount() {
-
 		window.scroll(0, 0);
 		this.props.featuredMovies();
 		this.props.highestRatedMovies();
@@ -21,52 +20,162 @@ class Home extends React.Component {
 			if (index === 0) {
 				return (
 					<div key={movie.id}>
-						<a onClick={() => this.props.findMovie(movie.id)}>
-							{' '}
-							<img
-								className="home-image"
-								src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-							/>
-						</a>
-
-						<div
-							style={{
-								position: 'absolute',
-								top: '18%',
-								left: '1.5%'
-							}}
-						>
+						<Breakpoint medium up>
+							<a onClick={() => this.props.findMovie(movie.id)}>
+								{' '}
+								<img
+									className="home-image"
+									src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+								/>
+							</a>
+						</Breakpoint>
+						<Breakpoint small only>
+							<a onClick={() => this.props.findMovie(movie.id)}>
+								{' '}
+								<img
+									className="home-image-small"
+									src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+								/>
+							</a>
+						</Breakpoint>
+						<Breakpoint xsmall only>
+							<a onClick={() => this.props.findMovie(movie.id)}>
+								{' '}
+								<img
+									className="home-image-very-small"
+									src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+								/>
+							</a>
+						</Breakpoint>
+						<Breakpoint large up>
 							<div
-								style={{ padding: '.6% 5%', margin: 'auto 40px', width: '100%' }}
-								className="animated fadeInLeft"
+								style={{
+									position: 'absolute',
+									top: '16%',
+									left: '1.5%'
+								}}
 							>
-								<h1 className="home-h1">Movie Of The Week:</h1>
-								<h1
-									style={{
-										color: 'white',
-										fontSize: 30,
-										letterSpacing: '2px',
-										textShadow: 'black 1px 2px 3px'
-									}}
+								<div
+									style={{ padding: '.6% 5%', margin: 'auto 40px', width: '100%' }}
+									className="animated fadeInLeft"
 								>
-									{movie.title}
-									{movie.name}
-								</h1>
-								<h4 style={{ textShadow: 'black 1px 2px 2px' }} className="crop-title">
-									{movie.overview}
-								</h4>
-								<h4
-									style={{
-										color: 'white',
-										margin: '5px 0',
-										fontSize: 20,
-										textShadow: 'black 1px 2px 2px'
-									}}
-								>
-									<i className="ui star icon" /> {movie.vote_average}
-								</h4>
+									<h1 className="home-h1" style={{ textShadow: 'black 1px 2px 3px' }}>
+										Movie Of The Week:
+									</h1>
+									<h1
+										style={{
+											color: 'white',
+											fontSize: 30,
+											letterSpacing: '2px',
+											textShadow: 'black 1px 2px 3px'
+										}}
+									>
+										{movie.title}
+										{movie.name}
+									</h1>
+									<h4 style={{ textShadow: 'black 1px 2px 2px' }} className="crop-title">
+										{movie.overview}
+									</h4>
+									<h4
+										style={{
+											color: 'white',
+											margin: '5px 0',
+											fontSize: 20,
+											textShadow: 'black 1px 2px 2px'
+										}}
+									>
+										<i className="ui star icon" /> {movie.vote_average}
+									</h4>
+								</div>
 							</div>
-						</div>
+						</Breakpoint>
+						<Breakpoint medium only>
+							<div
+								style={{
+									position: 'absolute',
+									top: '12%',
+									left: '1%'
+								}}
+							>
+								<div
+									style={{ padding: '.6% 5%', margin: 'auto 20px', width: '90%' }}
+									className="animated fadeInLeft"
+								>
+									<h1 className="home-h1" style={{ textShadow: 'black 1px 2px 3px' }}>
+										Movie Of The Week:
+									</h1>
+									<h1
+										style={{
+											color: 'white',
+											fontSize: 25,
+											letterSpacing: '2px',
+											textShadow: 'black 1px 2px 3px'
+										}}
+									>
+										{movie.title}
+										{movie.name}
+									</h1>
+									<h4 style={{ textShadow: 'black 1px 2px 2px' }} className="crop-title">
+										{movie.overview}
+									</h4>
+									<h4
+										style={{
+											color: 'white',
+											margin: '5px 0',
+											fontSize: 15,
+											textShadow: 'black 1px 2px 2px'
+										}}
+									>
+										<i className="ui star icon" /> {movie.vote_average}
+									</h4>
+								</div>
+							</div>
+						</Breakpoint>
+						<Breakpoint small down>
+							<div
+								style={{
+									position: 'absolute',
+									top: '10%',
+									left: '1%'
+								}}
+							>
+								<div
+									style={{ padding: '.6% 3%', margin: 'auto 20px', width: '90%' }}
+									className="animated fadeInLeft"
+								>
+									<h1
+										className="home-h1-small"
+										style={{ fontSize: 22, textShadow: 'black 1px 2px 3px' }}
+									>
+										Movie Of The Week:
+									</h1>
+									<h1
+										style={{
+											color: 'white',
+											fontSize: 22,
+											letterSpacing: '2px',
+											textShadow: 'black 1px 2px 3px'
+										}}
+									>
+										{movie.title}
+										{movie.name}
+									</h1>
+									<h4 style={{ textShadow: 'black 1px 2px 2px' }} className="crop-title">
+										{movie.overview}
+									</h4>
+									<h4
+										style={{
+											color: 'white',
+											margin: '5px 0',
+											fontSize: 15,
+											textShadow: 'black 1px 2px 2px'
+										}}
+									>
+										<i className="ui star icon" /> {movie.vote_average}
+									</h4>
+								</div>
+							</div>
+						</Breakpoint>
 					</div>
 				);
 			}
@@ -213,15 +322,31 @@ class Home extends React.Component {
 			<div>
 				<div className="ui item">{this.renderFeaturedList()}</div>
 				<div className="ui container" style={{ margin: '160px 0' }}>
-					<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Featured Movies</h2>
+					<Breakpoint xlarge up>
+						<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Featured Movies</h2>
+					</Breakpoint>
+					<Breakpoint large down>
+						<h2 style={{ textAlign: 'center', margin: '10px 0' }}>Featured Movies</h2>
+					</Breakpoint>
+
 					<Slider {...featuredCarouselSettings}>{this.renderFeaturedCarousel()}</Slider>
 				</div>
 				<div className="ui container" style={{ margin: '160px 0' }}>
+				<Breakpoint xlarge up>
 					<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Highest Rated Movies</h2>
+				</Breakpoint>
+				<Breakpoint large down>
+					<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Highest Rated Movies</h2>
+				</Breakpoint>
 					<Slider {...featuredCarouselSettings}>{this.renderHighestCarousel()}</Slider>
 				</div>
 				<div className="ui container" style={{ margin: '160px 0' }}>
+				<Breakpoint xlarge up>
 					<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Latest and Upcoming Movies</h2>
+				</Breakpoint>
+				<Breakpoint large down>
+					<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Latest and Upcoming Movies</h2>
+				</Breakpoint>
 					<Slider {...highestCarouselSettings}>{this.renderLatestCarousel()}</Slider>
 				</div>
 			</div>
