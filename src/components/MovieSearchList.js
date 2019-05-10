@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { searchMovies, findMovie } from '../actions';
 
 import './componentStyles/text.css';
+import './componentStyles/home.css'
 
 const placeHolderImage = require('../pics/background-1.jpg');
 
@@ -91,7 +92,7 @@ class App extends React.Component {
 		if (this.props.loading) {
 			return (
 				<div>
-					<div>
+					<div >
 						<div className="ui active dimmer">
 							<div className="ui big text loader">Searching...</div>
 						</div>
@@ -103,7 +104,7 @@ class App extends React.Component {
 		return (
 			<div>
 				<div className="ui container">
-					<div style={{ marginTop: 140 }}>{this.searchResultsRender()}</div>
+					<div style={{paddingTop: 140, minHeight: '100vh', marginBottom: 60}}>{this.searchResultsRender()}</div>
 				</div>
 			</div>
 		);

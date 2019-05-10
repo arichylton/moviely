@@ -1,13 +1,15 @@
 body {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 	min-height: 100vh;
 	height: 100%;
 	width: 100%;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(13, 30, 51, 0.966)), to(rgba(13, 14, 51, 0.966))), url(../../pics/background-1.jpg);
+    background-image: -webkit-linear-gradient(top left, rgba(13, 30, 51, 0.966), rgba(13, 14, 51, 0.966)), url(../../pics/background-1.jpg);
+    background-image: -o-linear-gradient(top left, rgba(13, 30, 51, 0.966), rgba(13, 14, 51, 0.966)), url(../../pics/background-1.jpg);
     background-image: linear-gradient(to bottom right, rgba(13, 30, 51, 0.966), rgba(13, 14, 51, 0.966)), url(../../pics/background-1.jpg);
 	background-size: cover;
 	background-position: center;
     background-attachment: fixed;
 
 	color: white
-
 }

@@ -13,7 +13,7 @@ class Footer extends React.Component {
 			>
 				<Breakpoint medium up>
 					<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-						<div style={{ display: 'flex', alignItems: 'center', width: 450, marginRight: 100 }}>
+						<div style={{ display: 'flex', alignItems: 'center', width: 450, marginRight: 90 }}>
 							<img style={{ height: 100, width: 'auto' }} src={attributionImage} />
 							<div style={{ marginLeft: 50 }}>
 								<h4 style={{ wordSpacing: 2, letterSpacing: 1 }}>

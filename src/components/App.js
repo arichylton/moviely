@@ -9,7 +9,9 @@ import Home from './pageComponents/Home';
 import MoviePage from './pageComponents/MoviePage';
 import history from '../history';
 import Footer from './Footer';
-import './componentStyles/app.css';
+
+import './componentStyles/app.css'
+
 
 class App extends React.Component {
 

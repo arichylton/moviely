@@ -315,7 +315,7 @@ class Home extends React.Component {
 		};
 
 		return (
-			<div>
+			<div style={{paddingBottom: 40}}>
 				<div className="ui item">{this.renderFeaturedList()}</div>
 				<div className="ui container" style={{ margin: '160px 0' }}>
 					<Breakpoint xlarge up>

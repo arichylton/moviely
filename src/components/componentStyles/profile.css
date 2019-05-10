@@ -3,6 +3,9 @@
 	min-height: 100vh;
 	height: 100%;
 	width: 100%;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(rgb(13, 30, 51)), to(rgba(47, 13, 51, 0.904))), url(../../pics/profile-background.jpg);
+    background-image: -webkit-linear-gradient(top left, rgb(13, 30, 51), rgba(47, 13, 51, 0.904)), url(../../pics/profile-background.jpg);
+    background-image: -o-linear-gradient(top left, rgb(13, 30, 51), rgba(47, 13, 51, 0.904)), url(../../pics/profile-background.jpg);
     background-image: linear-gradient(to bottom right, rgb(13, 30, 51), rgba(47, 13, 51, 0.904)), url(../../pics/profile-background.jpg);
 	background-size: cover;
 	background-position: center;
@@ -13,6 +16,9 @@
 
 .rail {
     position: absolute;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(rgb(13, 30, 51)), to(rgba(47, 13, 51, 0.904)));
+    background-image: -webkit-linear-gradient(top left, rgb(13, 30, 51), rgba(47, 13, 51, 0.904));
+    background-image: -o-linear-gradient(top left, rgb(13, 30, 51), rgba(47, 13, 51, 0.904));
     background-image: linear-gradient(to bottom right, rgb(13, 30, 51), rgba(47, 13, 51, 0.904));
     background-attachment: fixed;
     height: 100%;
@@ -37,4 +43,3 @@
     left: 2.5%;
     width: 15%;
 }
-

@@ -3,6 +3,9 @@
 	min-height: 100vh;
 	height: 100%;
 	width: 100%;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(36, 36, 36, 0.89)), to(rgba(22, 22, 56, 0.979))), url(../../pics/movie-background.jpg);
+    background-image: -webkit-linear-gradient(top left, rgba(36, 36, 36, 0.89), rgba(22, 22, 56, 0.979)), url(../../pics/movie-background.jpg);
+    background-image: -o-linear-gradient(top left, rgba(36, 36, 36, 0.89), rgba(22, 22, 56, 0.979)), url(../../pics/movie-background.jpg);
     background-image: linear-gradient(to bottom right, rgba(36, 36, 36, 0.89), rgba(22, 22, 56, 0.979)), url(../../pics/movie-background.jpg);
 	background-size: cover;
 	background-position: center;
@@ -10,4 +13,3 @@
 
     color: white
 }
-

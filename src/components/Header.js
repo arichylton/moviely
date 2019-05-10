@@ -82,17 +82,17 @@ class Header extends React.Component {
 				<div>
 					<Breakpoint large up>
 						<div style={{ display: 'flex' }}>
-							<a href="/#" style={{ color: 'white' }} className="ui item">
+							<span style={{ color: 'white' }} className="ui item">
 								<button onClick={this.onSignInClick} className="ui button inverted primary">
 									{' '}
 									Get Auth Token
 								</button>
-							</a>
-							<a href="/#" className="ui item">
+							</span>
+							<span href="/#" className="ui item">
 								<button className="ui button inverted grey" onClick={() => this.props.guestSignIn()}>
 									Sign in as Guest
 								</button>
-							</a>
+							</span>
 						</div>
 					</Breakpoint>
 					<Breakpoint medium down>
