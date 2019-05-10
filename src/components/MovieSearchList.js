@@ -21,7 +21,7 @@ class App extends React.Component {
 								<i style={{ marginRight: 4 }} className="ui heart icon" />
 								{movie.vote_average}
 							</h5>
-							<a href="/#" onClick={() => this.props.findMovie(movie.id)}>
+							<span onClick={() => this.props.findMovie(movie.id)}>
 								<img
 									style={{
 										width: 180,
@@ -33,7 +33,7 @@ class App extends React.Component {
 									alt={`${movie.title} pic`}
 									src={placeHolderImage}
 								/>
-							</a>
+							</span>
 						</div>
 					</div>
 				);
@@ -48,7 +48,7 @@ class App extends React.Component {
 								<i style={{ marginRight: 4 }} className="ui heart icon" />
 								{movie.vote_average}
 							</h5>
-							<a href="/#" onClick={() => this.props.findMovie(movie.id)}>
+							<span onClick={() => this.props.findMovie(movie.id)}>
 								<img
 									style={{
 										width: 180,
@@ -60,7 +60,7 @@ class App extends React.Component {
 									alt={`${movie.title} pic`}
 									src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 								/>
-							</a>
+							</span>
 						</div>
 					</div>
 				);
@@ -104,7 +104,7 @@ class App extends React.Component {
 		return (
 			<div>
 				<div className="ui container">
-					<div style={{paddingTop: 140, minHeight: '100vh', marginBottom: 60}}>{this.searchResultsRender()}</div>
+					<div style={{paddingTop: 140, minHeight: '100vh', paddingBottom: 60}}>{this.searchResultsRender()}</div>
 				</div>
 			</div>
 		);

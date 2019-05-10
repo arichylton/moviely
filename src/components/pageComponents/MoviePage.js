@@ -345,7 +345,7 @@ class MoviePage extends React.Component {
 	};
 
 	render() {
-		return <div className="moviePage-background">{this.renderMoviePage()}</div>;
+		return <div className="moviePage-background" style={{paddingBottom: 80}}>{this.renderMoviePage()}</div>;
 	}
 }
 
