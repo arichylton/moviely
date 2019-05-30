@@ -3,7 +3,7 @@ import history from '../history';
 
 export const requestAuthToken = () => async (dispatch) => {
 	const response = await axios.get(
-		`https://api.themoviedb.org/3/authentication/token/new?api_key=${MOVIEKEY}`
+		`https://api.themoviedb.org/3/authentication/token/new?api_key=${process.env.MOVIEKEY}`
 	);
 
 	dispatch({ type: 'SIGN_IN', payload: { ...response.data } });
@@ -11,7 +11,7 @@ export const requestAuthToken = () => async (dispatch) => {
 
 export const guestSignIn = () => async (dispatch) => {
 	const response = await axios.get(
-		`https://api.themoviedb.org/3/authentication/guest_session/new?api_key=${MOVIEKEY}`
+		`https://api.themoviedb.org/3/authentication/guest_session/new?api_key=${process.env.MOVIEKEY}`
 	);
 
 	dispatch({ type: 'GUEST_SIGN_IN', payload: { ...response.data } });
@@ -26,7 +26,7 @@ export const signOut = () => {
 export const findMovie = (id) => async (dispatch) => {
 
 	const response = await axios.get(
-		`https://api.themoviedb.org/3/movie/${id}?api_key=${MOVIEKEY}&language=en-US`
+		`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.MOVIEKEY}&language=en-US`
 	);
 
 	await dispatch({ type: 'FIND_MOVIE', payload: response.data });
@@ -36,7 +36,7 @@ export const findMovie = (id) => async (dispatch) => {
 
 export const featuredMovies = () => async (dispatch) => {
 	const response = await axios.get(
-		`https://api.themoviedb.org/3/trending/movie/week?api_key=${MOVIEKEY}`
+		`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.MOVIEKEY}`
 	);
 
 
@@ -45,7 +45,7 @@ export const featuredMovies = () => async (dispatch) => {
 
 export const highestRatedMovies = () => async (dispatch) => {
 	const response = await axios.get(
-		`https://api.themoviedb.org/3/movie/top_rated?api_key=${MOVIEKEY}&language=en-US&page=1`
+		`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.MOVIEKEY}&language=en-US&page=1`
 	);
 
 
@@ -54,7 +54,7 @@ export const highestRatedMovies = () => async (dispatch) => {
 
 export const latestMoviesData = () => async (dispatch) => {
 	const response = await axios.get(
-		`https://api.themoviedb.org/3/movie/upcoming?api_key=${MOVIEKEY}&language=en-US&page=1`
+		`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.MOVIEKEY}&language=en-US&page=1`
 	);
 
 
@@ -63,7 +63,7 @@ export const latestMoviesData = () => async (dispatch) => {
 
 export const searchMovies = (input) => async (dispatch) => {
 	const response = await axios.get(
-		`https://api.themoviedb.org/3/search/movie?api_key=${MOVIEKEY}&language=en-US&query=${input}&page=1&include_adult=false`
+		`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIEKEY}&language=en-US&query=${input}&page=1&include_adult=false`
 	);
 
 	dispatch(loading(false));
