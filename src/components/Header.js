@@ -31,10 +31,22 @@ class Header extends React.Component {
 					<Breakpoint large up>
 						<button className="ui button primary">Profile</button>
 					</Breakpoint>
-					<Breakpoint medium down>
+					<Breakpoint medium only>
 						<i
 							className="ui user icon grow"
 							style={{ color: '#54c8ff', fontSize: '250%', marginLeft: 15 }}
+						/>
+					</Breakpoint>
+					<Breakpoint small only>
+						<i
+							className="ui user icon grow"
+							style={{ color: '#54c8ff', fontSize: '250%', marginLeft: 15 }}
+						/>
+					</Breakpoint>
+					<Breakpoint xsmall down>
+						<i
+							className="ui user icon grow"
+							style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
 						/>
 					</Breakpoint>
 				</Link>
@@ -45,10 +57,22 @@ class Header extends React.Component {
 					<Breakpoint large up>
 						<button className="ui button">Guest Profile</button>
 					</Breakpoint>
-					<Breakpoint medium down>
+					<Breakpoint medium only>
 						<i
 							className="user circle outline icon grow"
-							style={{ color: 'rgb(218, 218, 218)', fontSize: '250%', marginLeft: 15 }}
+							style={{ color: 'rgb(218, 218, 218)', fontSize: '250%', marginLeft: '5%' }}
+						/>
+					</Breakpoint>
+					<Breakpoint small only>
+						<i
+							className="user circle outline icon grow"
+							style={{ color: 'rgb(218, 218, 218)', fontSize: '250%', marginLeft: '5%' }}
+						/>
+					</Breakpoint>
+					<Breakpoint xsmall down>
+						<i
+							className="user circle outline icon grow"
+							style={{ color: 'rgb(218, 218, 218)', fontSize: '200%', marginLeft: '5%' }}
 						/>
 					</Breakpoint>
 				</Link>
@@ -153,12 +177,12 @@ class Header extends React.Component {
 					display: 'flex',
 					alignItems: 'center',
 					backgroundImage: 'linear-gradient(to bottom right, rgba(13, 30, 51.9), rgba(20, 13, 51, 0.85))',
-					boxShadow: '0 2px 2px rgb(13, 30, 51, .2)'
+					boxShadow: '0 2px 2px rgb(13, 30, 51, .2)',				
 				}}
 				className="ui fixed menu"
 			>
-				<div style={{ display: 'flex', width: '100%', margin: '0 4%', alignItems: 'center' }}>
-					<div style={{ display: 'flex', flex: '0 1 auto', alignItems: 'center' }}>
+				<div style={{ display: 'flex', width: '100%', padding: '0 4%', alignItems: 'center' }}>
+					<div style={{ display: 'flex', alignItems: 'center' }}>
 						<Link
 							to="/"
 							onClick={() =>
@@ -208,7 +232,7 @@ class Header extends React.Component {
 						</Breakpoint>
 					</div>
 
-					<div className="right menu" style={{ display: 'flex', maxWidth: 400, alignItems: 'center' }}>
+					<div className="right menu" style={{ display: 'flex', alignItems: 'center' }}>
 						<Breakpoint small down>
 							<SearchModal />
 						</Breakpoint>

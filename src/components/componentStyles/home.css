@@ -31,8 +31,7 @@
 .home-image-very-small {
     position: relative;
     min-height: 400px;
-    width: 100vw;
-    margin: auto;
+    width: 100%;
     opacity: .6;
     background-size: cover;
     background-position: center;

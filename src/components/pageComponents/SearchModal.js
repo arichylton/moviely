@@ -20,7 +20,7 @@ export default class SearchModal extends Component {
 					/>
 				}
 				basic
-				size="small"
+				size="mini"
 				centered={false}
 				open={this.state.modalOpen}
 				onClose={this.handleClose}
@@ -29,7 +29,9 @@ export default class SearchModal extends Component {
 				<Header icon="film" content="Search for cool movies" />
 
 				<Modal.Actions>
+					
 					<SearchBar />
+					
 				</Modal.Actions>
 			</Modal>
 		);
