@@ -172,7 +172,7 @@ class Header extends React.Component {
           <Breakpoint large up>
             <div className='ui item'>
               <a
-                href={`https://www.themoviedb.org/authenticate/${this.props.isSignedIn.request_token}?redirect_to=https://ubiquitous-platypus-29d3a7.netlify.app/profile`}
+                href={`https://www.themoviedb.org/authenticate/${this.props.isSignedIn.request_token}?redirect_to=https://ubiquitous-platypus-29d3a7.netlify.app`}
               >
                 <button className='ui button blue'>Sign In with MovieDB</button>
               </a>
@@ -181,7 +181,7 @@ class Header extends React.Component {
           <Breakpoint medium down>
             <div className='ui item grow' style={{ marginBottom: 5 }}>
               <a
-                href={`https://www.themoviedb.org/authenticate/${this.props.isSignedIn.request_token}?redirect_to=https://ubiquitous-platypus-29d3a7.netlify.app/profile`}
+                href={`https://www.themoviedb.org/authenticate/${this.props.isSignedIn.request_token}?redirect_to=https://ubiquitous-platypus-29d3a7.netlify.app`}
               >
                 <i
                   className='user outline icon'
