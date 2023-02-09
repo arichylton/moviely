@@ -10,7 +10,7 @@ class RatingHearts extends Component {
   render() {
     return (
       <div>
-        <Rating icon='heart' maxRating={10} rating={this.props.movieData.vote_average} onRate={this.handleRate} disabled />
+        <Rating icon='heart' maxRating={10}  rating={this.props.movieData.vote_average} onRate={this.handleRate} disabled />
       </div>
     )
   }
