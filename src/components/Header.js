@@ -3,6 +3,7 @@ import './componentStyles/text.css';
 import { connect } from 'react-redux';
 import { requestAuthToken, signOut, guestSignIn, route } from '../actions';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import Breakpoint from 'react-socks';
 import SearchModal from './pageComponents/SearchModal';
 
@@ -195,6 +196,12 @@ class Header extends React.Component {
     }
   };
 
+  scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -130; 
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+  }
+
   render() {
     return (
       <div
@@ -216,46 +223,28 @@ class Header extends React.Component {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Link
-              to='/'
-              onClick={() =>
-                window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                })
-              }
-              style={{ color: 'white' }}
-              className='item grow'
-            >
+            <Link to='/' style={{ color: 'white' }} className='item grow'>
               <h1>Moviely</h1>
             </Link>
             <Breakpoint large up>
               <div className='ui item'>
-                <span
+                <HashLink
+                  to='/#featured'
+                  scroll={(el) => this.scrollWithOffset(el)}
                   style={{ color: 'white', cursor: 'pointer' }}
                   className='item grow'
-                  onClick={() =>
-                    window.scrollTo({
-                      top: 1000,
-                      behavior: 'smooth',
-                    })
-                  }
                 >
                   Featured
-                </span>
+                </HashLink>
 
-                <span
+                <HashLink
+                  to='/#highest'
+                  scroll={(el) => this.scrollWithOffset(el)}
                   style={{ color: 'white', cursor: 'pointer' }}
                   className='item grow'
-                  onClick={() =>
-                    window.scrollTo({
-                      top: 1600,
-                      behavior: 'smooth',
-                    })
-                  }
                 >
                   Highest Rated
-                </span>
+                </HashLink>
               </div>
             </Breakpoint>
             <div className='item' />

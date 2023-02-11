@@ -9,7 +9,6 @@ import '../componentStyles/text.css';
 
 class Home extends React.Component {
 	componentDidMount() {
-		window.scroll(0, 0);
 		this.props.featuredMovies();
 		this.props.highestRatedMovies();
 		this.props.latestMoviesData();
@@ -214,25 +213,28 @@ class Home extends React.Component {
 	renderLatestCarousel = () => {
 		return this.props.latestMovies.map((movie, index) => {
 			return (
-				<div style={{ padding: '0 1%' }} key={movie.id}>
-					<h4 className="crop" style={{ margin: '20px auto', textAlign: 'center' }}>
-						{movie.title}
-					</h4>
-					<a href="/#" onClick={() => this.props.findMovie(movie.id)}>
-						<img
-							alt={`${movie.title} pic`}
-							style={{
-								borderRadius: '10px',
-								width: 180,
-								height: 250,
-								margin: 'auto',
-								cursor: 'pointer'
-							}}
-							src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-						/>
-					</a>
-				</div>
-			);
+        <div style={{ padding: '0 1%' }} key={movie.id} id='latest'>
+          <h4
+            className='crop'
+            style={{ margin: '20px auto', textAlign: 'center' }}
+          >
+            {movie.title}
+          </h4>
+          <a href='/#' onClick={() => this.props.findMovie(movie.id)}>
+            <img
+              alt={`${movie.title} pic`}
+              style={{
+                borderRadius: '10px',
+                width: 180,
+                height: 250,
+                margin: 'auto',
+                cursor: 'pointer',
+              }}
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            />
+          </a>
+        </div>
+      );
 		});
 	};
 
@@ -324,38 +326,64 @@ class Home extends React.Component {
 		};
 
 		return (
-			<div style={{paddingBottom: 40}}>
-				<div className="ui item">{this.renderFeaturedList()}</div>
-				<div className="ui container" style={{ margin: '160px 0' }}>
-					<Breakpoint xlarge up>
-						<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Featured Movies</h2>
-					</Breakpoint>
-					<Breakpoint large down>
-						<h2 style={{ textAlign: 'center', margin: '10px 0' }}>Featured Movies</h2>
-					</Breakpoint>
+      <div style={{ paddingBottom: 40 }}>
+        <div className='ui item'>{this.renderFeaturedList()}</div>
+        <div
+          className='ui container'
+          style={{ margin: '160px 0' }}
+          id='featured'
+        >
+          <Breakpoint xlarge up>
+            <h2 style={{ textAlign: 'center', margin: '50px 0' }}>
+              Featured Movies
+            </h2>
+          </Breakpoint>
+          <Breakpoint large down>
+            <h2 style={{ textAlign: 'center', margin: '10px 0' }}>
+              Featured Movies
+            </h2>
+          </Breakpoint>
 
-					<Slider {...featuredCarouselSettings}>{this.renderFeaturedCarousel()}</Slider>
-				</div>
-				<div className="ui container" style={{ margin: '160px 0' }}>
-					<Breakpoint xlarge up>
-						<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Highest Rated Movies</h2>
-					</Breakpoint>
-					<Breakpoint large down>
-						<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Highest Rated Movies</h2>
-					</Breakpoint>
-					<Slider {...featuredCarouselSettings}>{this.renderHighestCarousel()}</Slider>
-				</div>
-				<div className="ui container" style={{ margin: '160px 0' }}>
-					<Breakpoint xlarge up>
-						<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Latest and Upcoming Movies</h2>
-					</Breakpoint>
-					<Breakpoint large down>
-						<h2 style={{ textAlign: 'center', margin: '50px 0' }}>Latest and Upcoming Movies</h2>
-					</Breakpoint>
-					<Slider {...highestCarouselSettings}>{this.renderLatestCarousel()}</Slider>
-				</div>
-			</div>
-		);
+          <Slider {...featuredCarouselSettings}>
+            {this.renderFeaturedCarousel()}
+          </Slider>
+        </div>
+        <div
+          className='ui container'
+          style={{ margin: '160px 0' }}
+          id='highest'
+        >
+          <Breakpoint xlarge up>
+            <h2 style={{ textAlign: 'center', margin: '50px 0' }}>
+              Highest Rated Movies
+            </h2>
+          </Breakpoint>
+          <Breakpoint large down>
+            <h2 style={{ textAlign: 'center', margin: '50px 0' }}>
+              Highest Rated Movies
+            </h2>
+          </Breakpoint>
+          <Slider {...featuredCarouselSettings}>
+            {this.renderHighestCarousel()}
+          </Slider>
+        </div>
+        <div className='ui container' style={{ margin: '160px 0' }}>
+          <Breakpoint xlarge up>
+            <h2 style={{ textAlign: 'center', margin: '50px 0' }}>
+              Latest and Upcoming Movies
+            </h2>
+          </Breakpoint>
+          <Breakpoint large down>
+            <h2 style={{ textAlign: 'center', margin: '50px 0' }}>
+              Latest and Upcoming Movies
+            </h2>
+          </Breakpoint>
+          <Slider {...highestCarouselSettings}>
+            {this.renderLatestCarousel()}
+          </Slider>
+        </div>
+      </div>
+    );
 	}
 }
 
