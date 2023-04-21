@@ -51,12 +51,12 @@ class Header extends React.Component {
               style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
             />
           </Breakpoint>
-          {/* <Breakpoint xsmall down>
+          <Breakpoint xsmall down>
             <i
               className='ui user icon grow'
               style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
             />
-          </Breakpoint> */}
+          </Breakpoint>
         </Link>
       );
     } else {
