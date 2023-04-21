@@ -38,7 +38,7 @@ class Footer extends React.Component {
                 src={attributionImage}
               />
               <div>
-                <h4 style={{ wordSpacing: 2, letterSpacing: 1 }}>
+                <h4 style={{ wordSpacing: 2, letterSpacing: 1, marginLeft: '25px' }}>
                   {' '}
                   Made with <ion-icon
                     name='heart'

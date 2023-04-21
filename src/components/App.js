@@ -10,28 +10,26 @@ import MoviePage from './pageComponents/MoviePage';
 import history from '../history';
 import Footer from './Footer';
 
-import './componentStyles/app.css'
-
+import './componentStyles/app.css';
 
 class App extends React.Component {
+  render() {
+    return (
+      <Router history={history}>
+        <Header />
 
-	render() {
-		return (
-			<Router history={history}>
-				<Header />
-				<div>
-					<Switch>
-						<Route path="/" exact component={Home} />
-						<Route path="/search" exact component={MovieSearchList} />
-						<Route path="/profile/guest" exact component={GuestSignIn} />
-						<Route path="/profile" exact component={SignIn} />
-						<Route path="/movie/:id" exact component={MoviePage} />
-					</Switch>
-					<Footer />
-				</div>
-			</Router>
-		);
-	}
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/search' exact component={MovieSearchList} />
+          <Route path='/profile/guest' exact component={GuestSignIn} />
+          <Route path='/profile' exact component={SignIn} />
+          <Route path='/movie/:id' exact component={MoviePage} />
+        </Switch>
+
+        <Footer />
+      </Router>
+    );
+  }
 }
 
 export default App;

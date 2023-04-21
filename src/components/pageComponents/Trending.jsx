@@ -6,8 +6,8 @@ let Trending = (props) => {
   return (
     <span className='movie-span'>
       {props.popularity}{' '}
-      {trendingArr.map(() => {
-        return <i className='ui orange fire icon' />;
+      {trendingArr.map((el, i) => {
+        return <i className='ui orange fire icon' key={i}/>;
       })}
     </span>
   );

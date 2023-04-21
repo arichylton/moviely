@@ -17,6 +17,10 @@ class Header extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    window.location = '/';
+  }
+
   onSignInClick = () => {
     if (
       !window.location.href.includes(`true`) &&
@@ -47,12 +51,12 @@ class Header extends React.Component {
               style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
             />
           </Breakpoint>
-          <Breakpoint xsmall down>
+          {/* <Breakpoint xsmall down>
             <i
               className='ui user icon grow'
               style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
             />
-          </Breakpoint>
+          </Breakpoint> */}
         </Link>
       );
     } else {
@@ -224,9 +228,14 @@ class Header extends React.Component {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Link to='/' style={{ color: 'white' }} className='item grow'>
+            <HashLink
+              to='/#'
+              scroll={(el) => this.scrollWithOffset(el)}
+              style={{ color: 'white', cursor: 'pointer' }}
+              className='item grow'
+            >
               <h1>Moviely</h1>
-            </Link>
+            </HashLink>
             <Breakpoint large up>
               <div className='ui item'>
                 <HashLink
