@@ -38,13 +38,13 @@ class Header extends React.Component {
           <Breakpoint medium only>
             <i
               className='ui user icon grow'
-              style={{ color: '#54c8ff', fontSize: '250%', marginLeft: 15 }}
+              style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
             />
           </Breakpoint>
           <Breakpoint small only>
             <i
               className='ui user icon grow'
-              style={{ color: '#54c8ff', fontSize: '250%', marginLeft: 15 }}
+              style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
             />
           </Breakpoint>
           <Breakpoint xsmall down>
@@ -66,7 +66,7 @@ class Header extends React.Component {
               className='user circle outline icon grow'
               style={{
                 color: 'rgb(218, 218, 218)',
-                fontSize: '250%',
+                fontSize: '200%',
                 marginLeft: '5%',
               }}
             />
@@ -76,7 +76,7 @@ class Header extends React.Component {
               className='user circle outline icon grow'
               style={{
                 color: 'rgb(218, 218, 218)',
-                fontSize: '250%',
+                fontSize: '200%',
                 marginLeft: '5%',
               }}
             />
@@ -117,7 +117,7 @@ class Header extends React.Component {
               <i
                 onClick={this.props.signOut}
                 className='user x icon grow'
-                style={{ color: '#ff695e', fontSize: '250%' }}
+                style={{ color: '#ff695e', fontSize: '200%' }}
               />
             </Breakpoint>
           </Link>
@@ -152,14 +152,14 @@ class Header extends React.Component {
               <a href='/#' style={{ color: 'white' }} className='ui item grow'>
                 <i
                   onClick={this.onSignInClick}
-                  style={{ color: '#54c8ff', fontSize: '250%', marginLeft: 15 }}
+                  style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
                   className='ui key icon'
                 />
               </a>
               <a href='/#' className='ui item' style={{ padding: '0 5% 0 0' }}>
                 <i
                   className='user circle outline icon grow'
-                  style={{ color: 'rgb(218, 218, 218)', fontSize: '250%' }}
+                  style={{ color: 'rgb(218, 218, 218)', fontSize: '200%' }}
                   onClick={() => this.props.guestSignIn()}
                 />
               </a>
@@ -173,7 +173,7 @@ class Header extends React.Component {
           <Breakpoint large up>
             <div className='ui item'>
               <a
-                href={`https://www.themoviedb.org/authenticate/${this.props.isSignedIn.request_token}?redirect_to=https://ubiquitous-platypus-29d3a7.netlify.app`}
+                href={`https://www.themoviedb.org/authenticate/${this.props.isSignedIn.request_token}?redirect_to=https://moviely-app.netlify.app/`}
               >
                 <button className='ui button blue'>Sign In with MovieDB</button>
               </a>
@@ -182,11 +182,11 @@ class Header extends React.Component {
           <Breakpoint medium down>
             <div className='ui item grow' style={{ marginBottom: 5 }}>
               <a
-                href={`https://www.themoviedb.org/authenticate/${this.props.isSignedIn.request_token}?redirect_to=https://ubiquitous-platypus-29d3a7.netlify.app`}
+                href={`https://www.themoviedb.org/authenticate/${this.props.isSignedIn.request_token}?redirect_to=https://moviely-app.netlify.app/`}
               >
                 <i
                   className='user outline icon'
-                  style={{ color: '#54c8ff', fontSize: '250%', marginLeft: 15 }}
+                  style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
                 />
               </a>
             </div>
@@ -198,9 +198,9 @@ class Header extends React.Component {
 
   scrollWithOffset = (el) => {
     const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
-    const yOffset = -130; 
-    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
-  }
+    const yOffset = -130;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+  };
 
   render() {
     return (
@@ -208,6 +208,7 @@ class Header extends React.Component {
         style={{
           display: 'flex',
           alignItems: 'center',
+          width: '100vw',
           backgroundImage:
             'linear-gradient(to bottom right, rgba(13, 30, 51.9), rgba(20, 13, 51, 0.85))',
           boxShadow: '0 2px 2px rgb(13, 30, 51, .2)',
@@ -218,7 +219,7 @@ class Header extends React.Component {
           style={{
             display: 'flex',
             width: '100%',
-            padding: '0 4%',
+            padding: '0 2%',
             alignItems: 'center',
           }}
         >

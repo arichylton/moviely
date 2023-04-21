@@ -16,7 +16,7 @@ export default class SearchModal extends Component {
 					<i
 						onClick={this.handleOpen}
 						className="ui search icon grow"
-						style={{ cursor: 'pointer', fontSize: '225%', display: 'flex', alignItems: 'center' }}
+						style={{ cursor: 'pointer', fontSize: '200%', display: 'flex', alignItems: 'center' }}
 					/>
 				}
 				basic
