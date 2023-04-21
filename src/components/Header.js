@@ -45,13 +45,7 @@ class Header extends React.Component {
               style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
             />
           </Breakpoint>
-          <Breakpoint small only>
-            <i
-              className='ui user icon grow'
-              style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
-            />
-          </Breakpoint>
-          <Breakpoint xsmall down>
+          <Breakpoint small down>
             <i
               className='ui user icon grow'
               style={{ color: '#54c8ff', fontSize: '200%', marginLeft: 15 }}
